@@ -1,0 +1,36 @@
+// Colours
+$white: rgba(255,255,255,1);
+$black: rgba(0,0,0,1);
+$grey: rgba(0,0,0,0.3);
+$off-black: rgba(0,0,0,0.65);
+$blue: rgba(30, 177, 242,1);
+$green: rgba(182, 193, 54,1);
+$orange: rgba(252, 114, 44, 1);
+
+$body-color: $off-black;
+$link-color: $blue;
+$main-accent: $blue;
+
+// Font
+$family-cursive: "Comfortaa", cursive;
+$family-sanserif: "Dosis", sans-serif;
+$nav-type: $family-sanserif;
+
+// MQs
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1301px !default;
+$xxlarge-screen-up: 2000px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1300px !default;
+$xlarge-screen: 1301px !default;
+$xxlarge-screen: 2000px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$xlarge-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+$xxlarge-and-up: "only screen and (min-width : #{$xxlarge-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
