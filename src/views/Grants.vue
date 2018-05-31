@@ -1,8 +1,9 @@
 <template>
 	<div v-if="data != null">
-		<section class="section" v-if="data && data.hasOwnProperty('meta_box')">
-			<div class="container">
-				<h1 id="bird-anchor" v-html="data.meta_box._page_grant_heading"></h1>
+		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;">
+			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
+			<div class="banner-text">
+				<h1 v-html="data.meta_box._page_grant_heading"></h1>
 				<div class="topContent" v-html="data.content.rendered"></div>
 			</div>
 		</section>
@@ -103,7 +104,7 @@ export default {
 
 	},
 	created() {
-		axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/pages/1825?_embed')
+		axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/pages/2394?_embed')
 		.then(response => {
             console.log(response.data)
 			this.data = response.data;
@@ -143,5 +144,23 @@ export default {
 
 @import '../styles/variables.scss';
 @import '../styles/views/home.scss';
+
+.main-banner {
+	width: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+.banner-text {
+	position: absolute;
+	z-index: 50;
+	max-width: 70%;
+	left: calc(15%);
+	top: calc(50% - 150px);
+}
+
+.map-section {
+	margin-top: -200px;
+}
 
 </style>

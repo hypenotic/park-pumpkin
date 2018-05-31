@@ -29,12 +29,13 @@
 }
 #pac-input {
     left: 0px;
+    visibility: hidden !important;
 }
 
 #grants-map {
     transition: all 0.5s ease;
 	width: 100%;
-    min-height: 80vh;
+    min-height: 100vh;
     // margin-bottom: 50px;
     display: inline-block;
 }

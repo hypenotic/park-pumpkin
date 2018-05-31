@@ -1,6 +1,6 @@
 <template v-if="this.$store.state.locationList != null">
     <div>
-        <app-filter></app-filter>
+        <!-- <app-filter></app-filter> -->
         <div class="map-container" v-bind:class="{ 'list-open': this.$store.state.listViewState }">
             <section class="google-map" id="grants-map"></section>
             <app-map-list></app-map-list>
@@ -50,10 +50,10 @@
                 posts: [],
                 showLoader: false,
                 showList: false,
-                bluePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/blue_marker_svg.svg',
-                orangePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/orange_marker_svg.svg',
-                greenPin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/green_marker_small.svg',
-                morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/more_events_marker.svg',
+                bluePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                orangePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                greenPin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
             }
         },
         mounted() {
@@ -147,7 +147,7 @@
                                 "color": "#000000"
                             },
                             {
-                                "lightness": 20
+                                "lightness": 10
                             }
                         ]
                     },
@@ -259,10 +259,10 @@
                 // app.chooseFilter();
             };
             // Listen for when the filter submit button is pressed
-            document.getElementById("apply-search").onclick = function() {
-                // app.applyFilters();
-                app.chooseFilter();
-            };
+            // document.getElementById("apply-search").onclick = function() {
+            //     // app.applyFilters();
+            //     app.chooseFilter();
+            // };
 
             app.map = new google.maps.Map(element, options);
             
