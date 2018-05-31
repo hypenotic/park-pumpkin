@@ -2,7 +2,7 @@
     <nav v-if="scrolled == true" id="scrolling" class="navbar">
         <div class="navbar-brand">
             <div>
-                <a href="https://parkpeople.ca/pumpkinparades"><img src="https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinlogo.png" class="grants-logo"></a>
+                <!-- <a href="https://parkpeople.ca/pumpkinparades"><img src="https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinlogo.png" class="grants-logo"></a> -->
             </div>
         </div>
 
@@ -26,7 +26,7 @@
     <nav v-else class="navbar ">
         <div class="navbar-brand">
             <div>
-                <a href="https://parkpeople.ca/parkgrants"><img src="https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinlogo.png" class="grants-logo"></a>
+                <!-- <a href="https://parkpeople.ca/parkgrants"><img src="https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinlogo.png" class="grants-logo"></a> -->
             </div>
         </div>
 

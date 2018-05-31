@@ -1,5 +1,5 @@
 <template>
-    <div style="position: relative;">
+    <div style="position: relative;background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;">
         <app-header></app-header>
         <transition name="fade">
             <router-view :key="$route.fullPath"></router-view>

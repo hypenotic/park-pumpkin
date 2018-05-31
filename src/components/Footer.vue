@@ -6,7 +6,7 @@
                     <div class="column is-6">
                         <div class="columns is-centered">
                             <div class="column is-4">
-                                <p>Founding Sponsor</p>
+                                <!-- <p>Founding Sponsor</p> -->
                                 <a href="" target="_blank"><img src=""></a>
                             </div>
                         </div>
@@ -47,12 +47,12 @@
                     <div class="column is-6">
                         <div class="columns is-centered">
                             <div class="column is-6">
-                                <p>Founding Sponsor</p>
+                                <!-- <p>Founding Sponsor</p> -->
                                 <a href="" target="_blank"><img src=""></a>
                             </div>
                         </div>
                     </div>
-                    <div class="column is-6" style="background-color: green; color: white;">
+                    <div class="column is-6" style="background-color: black; color: white;">
                         <div class="columns">
                             <div class="column is-6">
                                 <ul>
@@ -134,6 +134,7 @@
                 width: 100%;
                 height: 160px;
                 background: #fff;
+                background-image: url('https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg');
                 -webkit-transform: skewY(5deg);
                 -moz-transform: skewY(5deg);
                 -ms-transform: skewY(5deg);
