@@ -27,6 +27,10 @@
         </nav>
         <section id="banner" class="full">
         </section>
+        <div id="stars">
+            <div class="twinkle">
+            </div>
+        </div>
         <img id="moon" src="src/assets/moon.png">
         <section id="hero" class="full">
             <div class="fi">
@@ -157,7 +161,19 @@
 </script>
 
 <style lang="scss">
+    /* ----- defs */
     
+    @keyframes twinkle{
+        0%{
+            background: 100% 0% url(assets/twinkling.png);
+        }
+        50%{
+            background: 50% 0% url(assets/twinkling.png);
+        }
+        100%{
+            background: 0% 0% url(assets/twinkling.png);
+        }
+    }
 
     /* ----- resets */
 
@@ -225,8 +241,7 @@
         font-family: "Comfortaa";
         position: relative;
         color: #d3d1cd;
-        background: url(assets/stars.jpg);
-        background-size: 25%;
+        background: #001f62;
     }
 
     a{
@@ -329,9 +344,30 @@
     /* hero */
     #banner{
         position: absolute;
-        background: no-repeat bottom/100% url(assets/bannerbase.png);
+        background: no-repeat top/100% 20vh url(assets/gradient.png), no-repeat bottom/100% url(assets/bannerbase.png);
         bottom:0;
         z-index: 50;
+    }
+    
+    #stars{
+        width: 150%;
+        height: 100%;
+        z-index: 60;
+        background: 0% 0% / 10% url(assets/stars.png);
+        mix-blend-mode: screen;
+        position: absolute;
+        right:0;
+        bottom: 0;
+        transform: rotate(4.5deg);
+        transform-origin: 100% 100%;
+    }
+    
+    .twinkle{
+        width: 100%;
+        height: 100%;
+        z-index: 60;
+        position: absolute;
+        animation: twinkle 240s infinite linear;
     }
     
     #moon{
@@ -339,7 +375,7 @@
         width: 40rem;
         right: 3rem;
         top: 25%;
-        z-index: 50;
+        z-index: 75;
     }
     
     #hero{
