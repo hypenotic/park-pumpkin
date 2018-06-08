@@ -11,13 +11,10 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# WordPress - Install it yourself!
+# WordPress stuff - Install it yourself!
 
 cms
-cms/wordpress/*
-cms/custom/upgrade
-cms/custom/plugins
-cms/custom/languages
+!cms/custom/themes/parkpeople/includes
 
 # Editor directories and files
 .idea
