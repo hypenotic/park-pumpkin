@@ -1,6 +1,6 @@
 <template v-if="this.$store.state.locationList != null">
-    <div>
-        <!-- <app-filter></app-filter> -->
+    <section id="map">
+        <app-filter></app-filter>
         <div class="map-container" v-bind:class="{ 'list-open': this.$store.state.listViewState }">
             <section class="google-map" id="grants-map"></section>
             <app-map-list></app-map-list>
@@ -8,7 +8,7 @@
             <input id="pac-input" class="controls wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" type="text" placeholder="Enter your address to find park events near you." style="position: absolute; top: 0; z-index: 15;">
             <button id="reset-location" class="button hidden-reset-loc" style="position: absolute; z-index: 1;">Reset Map</button>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,7 +1,20 @@
+# Common
+
+.htaccess
+.DS_Store
+.sass-cache/
+robots.txt
+node_modules/
+
 .DS_Store
 node_modules/
 npm-debug.log
 yarn-error.log
+
+# WordPress stuff - Install it yourself!
+
+cms
+!cms/custom/themes/parkpeople/includes
 
 # Editor directories and files
 .idea
@@ -9,3 +22,6 @@ yarn-error.log
 *.ntvs*
 *.njsproj
 *.sln
+
+# Other - add project specific ignores below
+

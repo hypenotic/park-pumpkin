@@ -35,7 +35,7 @@
 			<ul>
 				<li v-for="sponsor in data.meta_box._page_grant_sponsors" :key="sponsor['_page_g_sponsor_img']">
 					<a :href="sponsor['_page_g_sponsor_link']" target="_blank"><img :src="sponsor['_page_g_sponsor_img']" alt="logo"></a>
-				</li>
+				</li> 
 			</ul>
 		</section> -->
 		
