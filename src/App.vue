@@ -1,163 +1,35 @@
 <template>
-    <div id="app">
-        <nav>
-            <div class="navinner" id="ni1">
-                <div id="home">
-                    <a href="#">
-                        <img src="src/assets/pplogo.png">
-                    </a>
-                </div>
-                <div id="social">
-                    ig t f
-                </div>
-            </div>
-            <div class="navinner" id="ni2">
-                <div id="lang">
-                    <span class="sel">En</span><span>Fr</span>
-                </div>
-                <a href="" id="register" class="but">
-                            Create/register a group
-            </a>
-                <div id="logo">
-                    <a href="http://parkpeople.ca">
-                        <img src="src/assets/parkpeople.png">                
-                    </a>
-                </div>
-            </div>
-        </nav>
-        <section id="banner" class="full">
-        </section>
-        <div id="stars">
-            <div class="twinkle">
+    <div style="position: relative;background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;">
+        <app-header></app-header>
+        <transition name="fade">
+            <router-view :key="$route.fullPath"></router-view>
+        </transition>
+        <app-footer></app-footer>
+        <div class="credits">
+            <div class="container">
+                <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://hypenotic.com" target="_blank">Hypenotic</a>.</p>
             </div>
         </div>
-        <img id="moon" src="src/assets/moon.png">
-        <section id="hero" class="full">
-            <div class="fi">
-                <div class="blurb">
-                    <p>
-                        <!-- <span v-html="page.meta_box._page_phero_heading"></span> -->
-                    </p>
-                    <p>
-                        <!-- <span v-html="page.meta_box._page_phero_copy"></span> -->
-                    </p>
-                </div>
-                <div>
-                    <form class="herosearch">
-                        <input type="text" name="findnear" placeholder="Find a parade near you">
-                        <input type="submit" value="🔍︎">
-                    </form>
-                </div>
-            </div>
-        </section>
-        <app-map></app-map>
-        <section id="media" class="col-2">
-            <div>
-                <video controls>
-                    <!-- <source :src="page.meta_box._page_pmedia_video" type="video/mp4"> -->
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div>
-                <!-- <img :src="page.meta_box._page_pmedia_image"> -->
-            </div>
-        </section>
-        <section id="howto" class="full middle">
-            <div class="heading center">
-                Simple Steps to Planning Your Pumpkin Parade
-            </div>
-            <div class="copy">
-                there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently, there is more text here apparently,
-            </div>
-        </section>
-        <section id="tips" class="full middle">
-            <div class="heading center">
-                THis is a heading
-            </div>
-            <div class="center">
-                some subtext
-            </div>
-            <div class="col-3">
-                <div>
-                    nice
-                </div>
-                <div>
-                    cool
-                </div>
-                <div>
-                    thing
-                </div>
-            </div>
-        </section>
-        <section id="partners">
-            <div>
-                sponsored by people
-            </div>
-            <div>
-                torono
-            </div>
-            <div>
-                metro
-            </div>
-        </section>
-        <section id="promo" class="col-3">
-            <div>
-                nice
-            </div>
-            <div>
-                cool
-            </div>
-            <div>
-                thing
-            </div>
-        </section>
-        <section id="cta">
-            click a shiny button
-        </section>
-        <section id="footer" class="col-2">
-            <div>
-                cool picture
-            </div>
-            <div>
-                contact info
-            </div>
-        </section>
     </div>
 </template>
 
 <script>
-    import store from './store';
-    import Map from './components/map/Map.vue';
-
+    import Header from './components/Header.vue';
+    import Footer from './components/Footer.vue';
+    import { mapState } from 'vuex';
     export default {
-        components: {
-            appMap: Map
-        },
-        store,
-        data(){
-            return {
-            }
-        },
-        computed:{
-            count(){
-                return store.state.count
-            },
-            page(){
-                return store.state.page
-            }
-        },
-        created() {
-            this.$store.dispatch('GET_PAGE');
-        },
-        methods: {
-            increment () {
-                store.commit('increment')
-            },
-            decrement () {
-                store.commit('decrement')
-            }
-        }
-    }
+    components: {
+        appHeader: Header,
+        appFooter: Footer
+    },
+    mounted: function() {
+        this.$store.dispatch("getLocations", {'type': 'initial-load'});
+        this.$store.dispatch("getActivities", {'type': 'initial-load'});
+    },
+    created: function() {
+        
+    },
+}
 </script>
 
 <style lang="scss">
@@ -198,7 +70,7 @@
 
         }
         html{
-            font-size: calc(0.9vw);
+            // font-size: calc(0.9vw);
         }
         .col-2{
             display: grid;

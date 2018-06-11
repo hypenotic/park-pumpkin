@@ -23,12 +23,6 @@
 			</div> 
 		</section>
 
-		<!-- <section class="grants-newsletter">
-			<div class="container">
-				<p>Want to stay up-to-date on Park People news?</p>
-				<a class="button" href="http://parkpeople.us2.list-manage.com/subscribe?u=ba963c8c64482c0ad756245c3&id=efc9b053b8" target="_blank">Get the Park People newsletter!</a>
-			</div>
-		</section> -->
 
 		<!-- <section class="grant-sponsors">
 			<p>Made possible by a great collaboration:</p>
@@ -38,6 +32,13 @@
 				</li> 
 			</ul>
 		</section> -->
+
+		<section class="grants-newsletter">
+			<div class="container">
+				<p>Want to stay up-to-date on Park People news?</p>
+				<a class="button" href="http://parkpeople.us2.list-manage.com/subscribe?u=ba963c8c64482c0ad756245c3&id=efc9b053b8" target="_blank">Get the Park People newsletter!</a>
+			</div>
+		</section>
 		
 		<!-- <app-related :title="data.meta_box._page_grant_resource_heading" :copy="data.meta_box._page_grant_resource_copy" :posts="relatedPosts"></app-related> -->
 	</div>

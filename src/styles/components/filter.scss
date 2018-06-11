@@ -1,5 +1,5 @@
 .filter {
-    background-color:rgba(63,63,63,1);
+    // background-color:rgba(63,63,63,1);
     height: 80px; 
     position: relative; 
     top:10px; 
@@ -171,9 +171,12 @@
       }
     }
     @media #{$medium-and-up} {
-      float: right;
+      position: absolute;
+      top: 0px;
+      right: 30px;
       li {
-        float:left; margin-right: 2em;
+        display:inline-block;
+        padding-left: 10px;
       }
     }
   }
