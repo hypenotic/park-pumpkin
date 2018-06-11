@@ -36,10 +36,10 @@
             <div class="fi">
                 <div class="blurb">
                     <p>
-                        <span v-html="page.meta_box._page_phero_heading"></span>
+                        <!-- <span v-html="page.meta_box._page_phero_heading"></span> -->
                     </p>
                     <p>
-                        <span v-html="page.meta_box._page_phero_copy"></span>
+                        <!-- <span v-html="page.meta_box._page_phero_copy"></span> -->
                     </p>
                 </div>
                 <div>
@@ -54,12 +54,12 @@
         <section id="media" class="col-2">
             <div>
                 <video controls>
-                    <source :src="page.meta_box._page_pmedia_video" type="video/mp4">
+                    <!-- <source :src="page.meta_box._page_pmedia_video" type="video/mp4"> -->
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div>
-                <img :src="page.meta_box._page_pmedia_image">
+                <!-- <img :src="page.meta_box._page_pmedia_image"> -->
             </div>
         </section>
         <section id="howto" class="full middle">
