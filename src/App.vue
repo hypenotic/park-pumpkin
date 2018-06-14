@@ -5,11 +5,11 @@
             <router-view :key="$route.fullPath"></router-view>
         </transition>
         <app-footer></app-footer>
-        <div class="credits">
+        <!-- <div class="credits">
             <div class="container">
                 <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://hypenotic.com" target="_blank">Hypenotic</a>.</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -116,8 +116,9 @@
         background: #001f62;
     }
 
-    a{
+    a {
         text-decoration: none;
+        color: #E1BA44;
     }
 
     a.but{
@@ -263,25 +264,28 @@
         height:100%;
     }
 
-    .herosearch > input[type="text"]{
+    #pac-input {
         font-family: "Comfortaa";
         width: 30rem;
         margin-top: 2rem;
-        font-size: 2rem;
+        font-size: 20px;
         border:0;
         background-color: rgba(255,255,255,0.1);
-        /*
         background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png);
         background-size: 3.5rem;
         background-position: right;
         background-repeat: no-repeat;
-        */
         padding: 1rem;
         border-radius: 1rem;
         color: #fff;
+        // position: relative;
+        // z-index: 100000000;
     }
 
-    .herosearch > input[type="submit"]{
+    table.gsc-completion-container {
+      z-index: 50000 !important; }
+
+    #pac-submit{
         vertical-align: baseline;
         transform: translate(-200%,0);
         background: transparent;
@@ -293,7 +297,7 @@
         color: orangered;
     }
 
-    .herosearch>*:focus{
+    #pac-input{
         outline: 0;
         box-shadow: 0 0 2pt 0pt white;
     }

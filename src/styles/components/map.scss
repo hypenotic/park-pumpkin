@@ -3,15 +3,17 @@
 }
 
 .map-container.list-open {
-    background: #e3e3e3;
+    // background: #e3e3e3;
     .map-list {
         display: inline-block;
         width: 100%;
-        min-height: 80vh;
-        max-height: 80vh;
+        min-height: 600px;
+        max-height: 600vh;
         overflow-y: scroll;
         // background: $white;
         // background: #e3e3e3;
+        position: absolute;
+        top: -50px;
         vertical-align: top;
         @media #{$medium-and-up} {
             width: 99.5%;
@@ -29,7 +31,7 @@
 }
 #pac-input {
     left: 0px;
-    visibility: hidden !important;
+    // visibility: hidden !important;
 }
 
 #grants-map {

@@ -44,9 +44,9 @@
         mounted() {
             let app = this;
             // Listen for when the filter submit button is pressed
-            document.getElementById("clear-filters").onclick = function() {
-                app.checkedCategories = [];
-            };
+            // document.getElementById("clear-filters").onclick = function() {
+            //     app.checkedCategories = [];
+            // };
         },
         methods: { 
             changeFilters() {

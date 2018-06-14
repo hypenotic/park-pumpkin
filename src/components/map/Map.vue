@@ -5,7 +5,7 @@
             <section class="google-map" id="grants-map"></section>
             <app-map-list></app-map-list>
             <div class="loading" v-bind:class="{ 'active-loader': showLoader }">Loading&#8230;</div>
-            <input id="pac-input" class="controls wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" type="text" placeholder="Enter your address to find park events near you." style="position: absolute; top: 0; z-index: 15;">
+            <!-- <input id="pac-input" class="controls wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" type="text" placeholder="Enter your address to find park events near you." style="position: absolute; top: 0; z-index: 15;"> -->
             <button id="reset-location" class="button hidden-reset-loc" style="position: absolute; z-index: 1;">Reset Map</button>
         </div>
     </section>

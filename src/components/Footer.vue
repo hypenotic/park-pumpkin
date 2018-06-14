@@ -3,7 +3,7 @@
         <footer v-if="this.$route.path == '/grant-recipients'">
             <div>
                 <div class="columns">
-                    <div class="column is-6">
+                    <div class="column is-6 left-side">
                         <div class="columns is-centered">
                             <div class="column is-4">
                                 <!-- <p>Founding Sponsor</p> -->
@@ -44,7 +44,7 @@
         <footer v-else class="foot">
             <div>
                 <div class="columns">
-                    <div class="column is-6">
+                    <div class="column is-6 left-side">
                         <div class="columns is-centered">
                             <div class="column is-6">
                                 <!-- <p>Founding Sponsor</p> -->
@@ -231,5 +231,10 @@
         &:hover {
             text-decoration: none;
         }
+    }
+
+    .column.is-6.left-side {
+        background-image: url('https://parkpeople.ca/listings/custom/uploads/2018/06/footer_image_pumpkin.jpg');
+        background-size: cover;
     }
 </style>

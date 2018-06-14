@@ -1,42 +1,90 @@
 <template>
 	<div v-if="data != null">
-		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;">
+		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;z-index: 5000;">
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
 				<h1 v-html="data.meta_box._page_grant_heading"></h1>
-				<div class="topContent" v-html="data.content.rendered"></div>
-			</div>
+				<input id="pac-input" type="text" name="findnear" placeholder="Find a pumpkin parade near you">
+				<input id="pac-submit" type="submit" value="">
+			</div> 
 		</section>
 
 		<section class="map-section">
 			<app-map></app-map>
 		</section>
 
+		<section class="full-width vid-ig">
+			<div class="container--extra-wide">
+				<div class="split">
+					<div class="split-video">
+						<div class="intrinsic-container intrinsic-container-16x9">
+							<iframe src="//www.youtube.com/embed/" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="split-ig">
+						<div class="split-ig--text">
+							<p>#pumpkinparade</p>
+							<a href="http://instagram.com/parkpeopleto"><i class="fa fa-instagram" aria-hidden="true"></i> See all</a>
+						</div>
+						<img src="/src/assets/park_ig.png" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="more-info">
+			<div class="container">
+				<h2>Simple Steps to Planning Your Pumpkin Parade</h2>
+				<div class="topContent" v-html="data.meta_box._page_grant_more_info"></div>
+			</div>
+		</section>
+
 		<section class="event-templates">
-			<h3 v-html="data.meta_box._page_buckets_main_heading"></h3>
-			<div class="three-column wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-				<div v-for="bucket in data.meta_box._page_buckets" :key="bucket.bucket_copy">
-					<h4 v-html="bucket._page_bucket_heading"></h4>
-					<p v-html="bucket._page_bucket_copy"></p>
-					<a :href="bucket._page_bucket_link" @click="downloadArea(bucket._page_bucket_heading)">Download .zip file</a>
+			<h2 v-html="data.meta_box._page_tri_section[0]._page_tri_section_heading"></h2>
+			<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+				<div v-for="bucket in data.meta_box._page_tri_section[0]._page_triple" :key="bucket.bucket_copy">
+					<h3 v-html="bucket._page_tri_heading"></h3>
+					<p v-html="bucket._page_tri_copy"></p>
+					<a :href="bucket._page_tri_button_link" @click="downloadArea(bucket._page_tri_heading)">Download .zip file</a>
 				</div>
 			</div> 
 		</section>
 
 
-		<!-- <section class="grant-sponsors">
-			<p>Made possible by a great collaboration:</p>
+		<section class="pp-sponsors">
+			<h2>Made possible by:</h2>
 			<ul>
-				<li v-for="sponsor in data.meta_box._page_grant_sponsors" :key="sponsor['_page_g_sponsor_img']">
+				<!-- <li v-for="sponsor in data.meta_box._page_grant_sponsors" :key="sponsor['_page_g_sponsor_img']">
 					<a :href="sponsor['_page_g_sponsor_link']" target="_blank"><img :src="sponsor['_page_g_sponsor_img']" alt="logo"></a>
-				</li> 
+				</li>  -->
+				<li>
+					<p>Founding Sponsor</p>
+					<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/TO_logo_white.png" alt="Toronto Logo">
+				</li>
+				<li class="second-sponsor">
+					<img src="/src/assets/metroland_logo.jpg" alt="">
+				</li>
+				<li>
+
+				</li>
 			</ul>
-		</section> -->
+		</section>
+
+		<section class="event-templates">
+			<h2 v-html="data.meta_box._page_tri_section[1]._page_tri_section_heading"></h2>
+			<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+				<div v-for="bucket in data.meta_box._page_tri_section[1]._page_triple" :key="bucket.bucket_copy">
+					<h3 v-html="bucket._page_tri_heading"></h3>
+					<!-- <p v-html="bucket._page_tri_copy"></p> -->
+					<a :href="bucket._page_tri_button_link" @click="downloadArea(bucket._page_tri_heading)" v-html="bucket._page_tri_button_text"></a>
+				</div>
+			</div> 
+		</section>
 
 		<section class="grants-newsletter">
 			<div class="container">
 				<p>Want to stay up-to-date on Park People news?</p>
-				<a class="button" href="http://parkpeople.us2.list-manage.com/subscribe?u=ba963c8c64482c0ad756245c3&id=efc9b053b8" target="_blank">Get the Park People newsletter!</a>
+				<a class="" href="http://parkpeople.us2.list-manage.com/subscribe?u=ba963c8c64482c0ad756245c3&id=efc9b053b8" target="_blank">Get the Park People newsletter!</a>
 			</div>
 		</section>
 		
@@ -45,6 +93,7 @@
 	<div v-else class="loading-panel">
 		<div>
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/01/birdflying_pp_small.gif" alt="">
+			
 		</div>
 	</div>
 </template>
@@ -155,13 +204,48 @@ export default {
 .banner-text {
 	position: absolute;
 	z-index: 50;
-	max-width: 70%;
-	left: calc(15%);
-	top: calc(50% - 150px);
+	max-width: 80%;
+	left: calc(10%);
+	top: calc(45% - 150px);
+	h1 {
+		font-size: 60px;
+	}
 }
 
 .map-section {
-	margin-top: -200px;
+	margin-top: -250px;
 }
+
+.herosearch > input[type="text"]{
+        font-family: "Comfortaa";
+        width: 30rem;
+        margin-top: 2rem;
+        font-size: 24px;
+        border:0;
+        background-color: rgba(255,255,255,0.1);
+        
+        background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png);
+        background-size: 3.5rem;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding: 1rem;
+        border-radius: 1rem;
+        color: #fff;
+    }
+    .herosearch > input[type="submit"]{
+        vertical-align: baseline;
+        transform: translate(-200%,0);
+        background: transparent;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 2rem;
+        font-family: sans-serif;
+        color: orangered;
+    }
+    .herosearch>*:focus{
+        outline: 0;
+        box-shadow: 0 0 2pt 0pt white;
+    }
 
 </style>

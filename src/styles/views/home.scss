@@ -38,7 +38,7 @@
 .event-templates,
 .grant-recipients {
 	h3 {
-		color: $green;
+		color: #d3d1cd;
 		text-align: center;
 		font-size: 24px;
 		@media #{$medium-and-up} {
@@ -257,6 +257,13 @@ h1 {
 .more-info {
 	position: relative;
 	z-index: 500;
+	min-height: 500px;
+	padding-top: 100px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 	p {
 		font-size: 1.5rem;
 	}
@@ -444,3 +451,134 @@ h1 {
 .recipients {
     padding-bottom: 80px;
 }
+
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+ 
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  padding-bottom: 70%;
+}
+ 
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  padding-bottom: 75%;
+}
+ 
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.split {
+	display: flex;
+	>div {
+		width: 50%;
+	}
+	.split-ig--text {
+		padding: 20px 60px 0;
+		text-align: right;
+	}
+	.split-ig {
+		position: relative;
+		img {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 85%;
+		}
+	}
+}
+
+.vid-ig {
+	margin-top: -63px;
+}
+
+.event-templates {
+	h2 {
+		text-align: center;
+	}
+	h3 {
+		font-size: 24px;
+		text-align: left;
+		font-weight: bold;
+	}
+	p {
+		font-size: 18px;
+		line-height: 1.5;
+		margin-top: 5px;
+	}
+	a {
+		border: 1px solid $yellow;
+		background: transparent;
+		color: $yellow;
+		padding: 16px 32px;
+		display: inline-block;
+		margin-top: 24px;
+		border-radius: 50px;
+		font-size: 18px;
+		line-height: 1;
+		font-family: 'Dosis';
+		&:hover {
+			background: $yellow;
+			color: $white;
+			border: 1px solid $yellow;
+		}
+	}
+}
+
+.grants-newsletter {
+	p {
+		font-size: 18px;
+	}
+	a {
+		border: 1px solid #E1BA44;
+		background: transparent;
+		color: #E1BA44;
+		padding: 16px 32px;
+		display: inline-block;
+		margin-top: 16px;
+		border-radius: 50px;
+		font-size: 18px;
+		&:hover {
+			background: $yellow;
+			color: $white;
+			border: 1px solid $yellow;
+		}
+	}
+}
+
+.pp-sponsors {
+	text-align: center;
+	li:first-child {
+		img {
+			width: 50%;
+			max-width: 700px;
+			height: auto;
+		}
+	}
+}
+
+.pp-sponsors {
+	text-align: center;
+	padding-bottom: 50px;
+	p {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	li {
+		margin:20px 0 48px 0;
+	}
+	.second-sponsor {
+		img {
+			max-width: 300px;
+		}
+	}
+}
+
