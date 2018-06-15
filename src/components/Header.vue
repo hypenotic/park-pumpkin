@@ -26,7 +26,7 @@
         <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'menu-open': showMobileMenu }">
             <div class="navbar-end">
                 <a href="https://parkpeople.ca/listings" class="navigation-register">Create/Register a group</a>
-                <a class="park-logo" href="https://parkpeople.ca"><img src="/src/assets/parkpeople.png" alt=""></a>
+                <a class="park-logo" href="https://parkpeople.ca"><img src="src/assets/parkpeople.png" alt=""></a>
             </div>
         </div>
     </nav>
@@ -61,7 +61,7 @@
                     <a v-else href="https://parkpeople.ca/boursesdeparc">FR</a>
                 </div>
                 <a href="https://parkpeople.ca/listings" class="navigation-register">Create/Register a group</a>
-                <a href="https://parkpeople.ca" class="navbar-item park-logo"><img src="/src/assets/parkpeople.png" alt=""></a>
+                <a href="https://parkpeople.ca" class="navbar-item park-logo"><img src="src/assets/parkpeople.png" alt=""></a>
                 <!-- <span class="navbar-item" v-on:click="showMobileMenu = !showMobileMenu" v-if="this.$route.path == '/grant-recipients'"><router-link to="/" exact>Back to Grants Page</router-link></span>
                 <span class="navbar-item" v-on:click="showMobileMenu = !showMobileMenu" v-if="this.$route.path == '/'"><router-link to="/grant-recipients" exact>2018 Recipients</router-link></span> -->
             </div>
