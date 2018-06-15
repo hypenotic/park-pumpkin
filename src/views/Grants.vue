@@ -26,7 +26,7 @@
 							<p>#pumpkinparade</p>
 							<a href="http://instagram.com/parkpeopleto"><i class="fa fa-instagram" aria-hidden="true"></i> See all</a>
 						</div>
-						<img src="/src/assets/park_ig.png" alt="">
+						<img src="src/assets/park_ig.png" alt="">
 					</div>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 					<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/TO_logo_white.png" alt="Toronto Logo">
 				</li>
 				<li class="second-sponsor">
-					<img src="/src/assets/metroland_logo.jpg" alt="">
+					<img src="src/assets/metroland_logo.jpg" alt="">
 				</li>
 				<li>
 
