@@ -123,7 +123,7 @@
 
     footer {
         position: relative;
-        padding-top: 150px;
+        // padding-top: 150px;
         > div {
             position: relative;
             &:before {
@@ -134,7 +134,7 @@
                 width: 100%;
                 height: 160px;
                 background: #fff;
-                background-image: url('https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg');
+                // background-image: url('https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg');
                 -webkit-transform: skewY(5deg);
                 -moz-transform: skewY(5deg);
                 -ms-transform: skewY(5deg);

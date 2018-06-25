@@ -35,7 +35,7 @@
 	}
 }
 
-.event-templates,
+.event-templates__container,
 .grant-recipients {
 	h3 {
 		color: #d3d1cd;
@@ -275,7 +275,7 @@ h1 {
 	line-height: 1.5;
 	margin-top: 100px;
 	@media #{$medium-and-up} {
-		margin-top: 40px;
+		margin-top: 0px;
 		font-size: 0.8rem;
 	}
 	p {
@@ -497,10 +497,23 @@ h1 {
 }
 
 .vid-ig {
+	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
 	margin-top: -63px;
 }
 
+.event-templates__grad-container {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.event-templates__container {
+	padding-top: 100px;
+}
+
 .event-templates {
+	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
 	h2 {
 		text-align: center;
 	}
@@ -534,6 +547,8 @@ h1 {
 }
 
 .grants-newsletter {
+	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
+	padding-bottom: 56px;
 	p {
 		font-size: 18px;
 	}
@@ -555,10 +570,12 @@ h1 {
 }
 
 .pp-sponsors {
+	background: $white;
 	text-align: center;
+	padding-top: 56px;
 	li:first-child {
 		img {
-			width: 50%;
+			width: 30%;
 			max-width: 700px;
 			height: auto;
 		}
