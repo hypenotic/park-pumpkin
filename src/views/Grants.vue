@@ -1,5 +1,26 @@
 <template>
 	<div v-if="data != null">
+		<!-- <section id="banner" class="full">
+        </section>
+        <div id="stars">
+            <div class="twinkle">
+            </div>
+        </div>
+        <img id="moon" src="src/assets/moon.png">
+        <section id="hero" class="full">
+            <div class="fi">
+                <div class="blurb">
+                    <h1 v-html="data.meta_box._page_grant_heading"></h1>
+                </div>
+                <div>
+                    <form class="herosearch">
+                        <input type="text" name="findnear" placeholder="Find a parade near you">
+                        <input type="submit" value="🔍︎">
+                    </form>
+                </div>
+            </div>
+        </section> -->
+		
 		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;z-index: 5000;">
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
@@ -75,14 +96,14 @@
 		</section>
 
 		<section class="pp-sponsors">
-			<h2>Made possible by:</h2>
+			<h2>Made possible by a great collaboration:</h2>
 			<ul>
 				<!-- <li v-for="sponsor in data.meta_box._page_grant_sponsors" :key="sponsor['_page_g_sponsor_img']">
 					<a :href="sponsor['_page_g_sponsor_link']" target="_blank"><img :src="sponsor['_page_g_sponsor_img']" alt="logo"></a>
 				</li>  -->
 				<li>
-					<p>Founding Sponsor</p>
 					<img src="https://parkpeople.ca/listings/custom/uploads/2018/06/TO_logo_black.png" alt="Toronto Logo">
+					<img src="https://parkpeople.ca/listings/custom/uploads/2018/04/pp_logo_large.png" alt="Park People Logo">
 				</li>
 				<li class="second-sponsor">
 					<p>Media Sponsor</p>
@@ -252,6 +273,112 @@ export default {
     .herosearch>*:focus{
         outline: 0;
         box-shadow: 0 0 2pt 0pt white;
-    }
+	}
+	
+/* hero */
+// .full{
+// 	width: 100%;
+// }
 
+
+// .full > .fi{
+// 	width: 80%;
+// 	margin: auto;
+// }
+
+// #banner{
+// 	position: absolute;
+// 	// background: no-repeat top/100% 20vh url(../assets/gradient.png), no-repeat bottom/100% url(../assets/bannerbase.png);
+// 	bottom:0;
+// 	z-index: 50;
+// }
+
+// #stars{
+// 	width: 150%;
+// 	height: 100%;
+// 	z-index: 60;
+// 	background: 0% 0% / 10% url(../assets/stars.png);
+// 	mix-blend-mode: screen;
+// 	position: absolute;
+// 	right:0;
+// 	bottom: 0;
+// 	transform: rotate(4.5deg);
+// 	transform-origin: 100% 100%;
+// }
+
+// .twinkle{
+// 	width: 100%;
+// 	height: 100%;
+// 	z-index: 60;
+// 	position: absolute;
+// 	animation: twinkle 240s infinite linear;
+// }
+
+// #moon{
+// 	position: absolute;
+// 	width: 40rem;
+// 	right: 3rem;
+// 	top: 25vh;
+// 	z-index: 75;
+// }
+
+// #hero{
+// 	/* maybe make this fluid later */
+// 	margin-bottom: -10%;
+// 	background: no-repeat bottom/100% url(../assets/bannerpeople.png);
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	z-index: 100;
+// 	position: relative;
+// 	letter-spacing: 1.1;
+// 	height:100vh;
+// }
+
+// .herosearch > input[type="text"]{
+// 	font-family: "Comfortaa";
+// 	width: 30rem;
+// 	margin-top: 2rem;
+// 	font-size: 2rem;
+// 	border:0;
+// 	background-color: rgba(255,255,255,0.1);
+// 	/*
+// 	background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png);
+// 	background-size: 3.5rem;
+// 	background-position: right;
+// 	background-repeat: no-repeat;
+// 	*/
+// 	padding: 1rem;
+// 	border-radius: 1rem;
+// 	color: #fff;
+// }
+
+// .herosearch > input[type="submit"]{
+// 	vertical-align: baseline;
+// 	transform: translate(-200%,0);
+// 	background: transparent;
+// 	border: 0;
+// 	margin: 0;
+// 	padding: 0;
+// 	font-size: 2rem;
+// 	font-family: sans-serif;
+// 	color: orangered;
+// }
+
+// .herosearch>*:focus{
+// 	outline: 0;
+// 	box-shadow: 0 0 2pt 0pt white;
+// }
+
+// #hero .blurb{
+// 	font-size: 6rem;
+// 	font-family: "Oswald";
+// 	text-transform: uppercase;
+// 	line-height: 1.1;
+// 	text-shadow: 1px 3px 1px rgba(255,255,255,0.2);
+// }
+
+// #hero .blurb p{
+// 	margin: 0;
+// }
 </style>

@@ -123,7 +123,7 @@
 
     footer {
         position: relative;
-        // padding-top: 150px;
+        padding-top: 150px;
         > div {
             position: relative;
             &:before {
