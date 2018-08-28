@@ -63,7 +63,7 @@
             const options   = {
                 // How zoomed in you want the map to start at (always required)
                 zoom: 4,
-
+                mapTypeControl: false,
                 scrollwheel:  false,
                 // draggable: isDraggable,
 
