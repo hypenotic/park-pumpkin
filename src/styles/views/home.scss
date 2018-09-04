@@ -22,7 +22,7 @@
 	width: 100%;
 	min-height: 80vh;
 	background: #eee;
-	margin-bottom: 56px;
+	// margin-bottom: 56px;
 	@media #{$small-and-down} {
 		min-height: 90vh;
 	}
@@ -500,6 +500,8 @@ h1 {
 .vid-ig {
 	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
 	margin-top: -63px;
+	position: relative;
+	z-index: 7000;
 }
 
 .event-templates__grad-container {
@@ -545,6 +547,12 @@ h1 {
 			border: 1px solid $yellow;
 		}
 	}
+}
+
+.resources-blog {
+	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
+	text-align: center;
+	padding: 4rem 0;
 }
 
 .grants-newsletter {

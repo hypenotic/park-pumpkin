@@ -64,6 +64,7 @@
 @import '../../styles/variables.scss';
 
 .single-list-item {
+    color: rgba(0,0,0,0.74);
     h5 {
         font-size: 18px;
         line-height: 1.3;
@@ -72,13 +73,13 @@
         font-weight: bold;
         &:hover {
             a {
-                color: darken($blue, 10);
+                color: rgb(2, 33, 95);
             } 
         }
     }
     a {
         &:hover {
-            color: darken($blue, 10);
+            color: rgb(2, 33, 95);
         }
     }
 }

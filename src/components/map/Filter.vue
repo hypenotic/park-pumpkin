@@ -20,8 +20,8 @@
         </div>       -->
         
         <ul class="map-type">
-            <li id="map-view-trigger" v-on:click="listTrigger" class="view-trigger" v-if="this.$store.state.listViewState"><img src="https://parkpeople.ca/parades/src/assets/map-trigger.svg" alt="orange map icon"></li>
-            <li id="map-view-trigger" v-on:click="listTrigger" class="view-trigger" v-else><img src="https://parkpeople.ca/parades/src/assets/map-trigger-white.svg" alt="white map icon"></li>
+            <li id="map-view-trigger" v-on:click="listTrigger" class="view-trigger" v-if="this.$store.state.listViewState"><img src="https://parkpeople.ca/parades/src/assets/map-trigger-white.svg" alt="orange map icon"></li>
+            <li id="map-view-trigger" v-on:click="listTrigger" class="view-trigger" v-else><img src="https://parkpeople.ca/parades/src/assets/map-trigger.svg" alt="white map icon"></li>
             <li id="list-view-trigger" v-on:click="listTrigger" class="view-trigger" v-bind:class="[this.$store.state.listViewState ? 'active-trigger' : '']"><i class="fa fa-list fa-2x" aria-hidden="true"></i></li>
         </ul>
     </section>

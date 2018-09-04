@@ -160,7 +160,8 @@
   }
   
   .filter .map-type {
-    list-style-type: none; 
+    list-style-type: none;
+    // background: rgb(2, 33, 95); 
     @media #{$small-and-down} {
       position: absolute;
       top: 0px;
@@ -646,7 +647,7 @@ input.chk-btn:checked + label {
         li {
         float:left; 
         margin-right: 2em;
-        // margin-top: 12px;
+        margin-top: 1em;
         }
     }
 }

@@ -39,7 +39,7 @@
 				<div class="split">
 					<div class="split-video">
 						<div class="intrinsic-container intrinsic-container-16x9">
-							<iframe src="//www.youtube.com/embed/" allowfullscreen></iframe>
+							<iframe src="//www.youtube.com/embed/8kOzSzmx-kE" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="split-ig">
@@ -74,7 +74,16 @@
 				</div>
 			</div>
 		</section>
-		
+
+		<section class="resources-blog">
+			<div class="resources-blog__container">
+				<h2>Resources and Blog Posts</h2>
+					<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+						
+					</div> 
+			</div>
+		</section>
+
 		<section class="grants-newsletter">
 			<div class="container">
 				<p>Want to stay up-to-date on Park People news?</p>

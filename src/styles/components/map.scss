@@ -7,7 +7,8 @@
     .map-list {
         display: inline-block;
         width: 100%;
-        min-height: 600px;
+        // min-height: 600px;
+        min-height: calc(600px + 150px);
         max-height: 600vh;
         overflow-y: scroll;
         // background: $white;
@@ -16,7 +17,7 @@
         top: -50px;
         vertical-align: top;
         @media #{$medium-and-up} {
-            width: 99.5%;
+            width: 100%;
         }
     }
     #grants-map {
@@ -37,7 +38,8 @@
 #grants-map {
     transition: all 0.5s ease;
 	width: 100%;
-    min-height: 600px;
+    min-height: calc(600px + 150px);
+    overflow: initial !important;
     // margin-bottom: 50px;
     display: inline-block;
 }
@@ -136,8 +138,8 @@
 
 #reset-location {
   display: block;
-  top: 80px;
-  left: 15px;
+  top: 220px;
+  right: 4rem;
   font-family: $nav-type;
   z-index: 1;
 }
@@ -165,13 +167,13 @@ button, .button {
     }
 }
 
-#reset-location {
-    display: block;
-    top: 80px;
-    left: 15px;
-    font-family: $nav-type;
-    z-index: 1;
-}
+// #reset-location {
+//     display: block;
+//     top: 80px;
+//     left: 15px;
+//     font-family: $nav-type;
+//     z-index: 1;
+// }
 
 #reset-location.hidden-reset-loc {
     display: none;
