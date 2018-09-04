@@ -53,7 +53,7 @@
                 bluePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
                 orangePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
                 greenPin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
-                morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/more_events_marker.svg',
+                morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
             }
         },
         mounted() {
@@ -639,16 +639,16 @@
 
                 }
 
-                app.oms.addListener('format', function(marker, status) {
-                    var iconURL = status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIED ? app.bluePin :
-                        status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE ? app.morePin :
-                        status == OverlappingMarkerSpiderfier.markerStatus.UNSPIDERFIABLE ? app.orangePin :
-                        app.greenPin;
-                    marker.setIcon({
-                        url: iconURL,
-                        scaledSize: new google.maps.Size(23, 32)  // makes SVG icons work in IE
-                    });
-                });
+                // app.oms.addListener('format', function(marker, status) {
+                //     var iconURL = status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIED ? app.bluePin :
+                //         status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE ? app.morePin :
+                //         status == OverlappingMarkerSpiderfier.markerStatus.UNSPIDERFIABLE ? app.orangePin :
+                //         app.greenPin;
+                //     marker.setIcon({
+                //         url: iconURL,
+                //         scaledSize: new google.maps.Size(23, 32)  // makes SVG icons work in IE
+                //     });
+                // });
 
                 this.map.panBy(-80, -200);
 
