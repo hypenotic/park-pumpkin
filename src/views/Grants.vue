@@ -75,12 +75,38 @@
 			</div>
 		</section>
 
-		<section class="resources-blog">
-			<div class="resources-blog__container">
-				<h2>Resources and Blog Posts</h2>
+		<section class="event-templates event-templates--top">
+			<div class="">
+				<div class="event-templates__container">
+					<h2>Resources and Blog Posts</h2>
 					<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-						
+						<div class="three-column__single">
+							<h3>Tips to make your pumpkin parade shine</h3>
+							<p>Pumpkin Parades are simple, but there are a few things you should know before hosting your first one.</p>
+							<a href="https://parkpeople.ca/resources/en/resource/551/tips-to-make-your-pumpkin-parade-shine" target="_blank">View resource</a>
+						</div>
+						<div class="three-column__single">
+							<h3>Pumpkin Parades</h3>
+							<p>Pumpkin Parades involve bringing all of the community jack-o-lanterns to the park to create a magical gallery of pumpkins for the neighbourhood to enjoy. They’re simple to execute and are growning in popularity. Find out why.</p>
+							<a href="https://parkpeople.ca/resources/en/resource/449/pumpkin-parade" target="_blank">View resource</a>
+						</div>
+						<div class="three-column__single">
+							<h3>Pumpkin Parade Founder gets to the core of her love of pumpkins</h3>
+							<p>Yes, Pumpkin Parades are a Toronto-born cultural phenomenon. But, do you know the woman behind this great tradition?</p>
+							<a href="https://parkpeople.ca/archives/9626" target="_blank">View blog post</a>
+						</div>
+						<div class="three-column__single">
+							<h3>Ottawa spreads Pumpkin Parade celebrations</h3>
+							<p>We spoke with Anita Grace, who brought the parades to Ottawa to get the scoop on what it’s been like bringing the Halloween after-party to her city.</p>
+							<a href="https://parkpeople.ca/archives/9633" target="_blank">View blog post</a>
+						</div>
+						<div class="three-column__single">
+							<h3>You don’t need to celebrate halloween to love pumpkin parades</h3>
+							<p>Clara Stewart Robertson brought a Pumpkin Parade to her neighbourhood. And in her neighbourhood Pumpkin Parades thrived, even without Halloween.</p>
+							<a href="https://parkpeople.ca/archives/9641" target="_blank">View blog post</a>
+						</div>
 					</div> 
+				</div>
 			</div>
 		</section>
 

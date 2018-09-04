@@ -1118,4 +1118,8 @@
 @import '../../styles/components/loader.scss';
 @import '../../styles/components/map.scss';
 
+.pac-container {
+    z-index: 1051 !important;
+}
+
 </style>
