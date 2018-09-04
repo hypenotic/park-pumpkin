@@ -57,8 +57,8 @@
         <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'menu-open': showMobileMenu }">
             <div class="navbar-end">
                 <div class="lang">
-                    <a v-if="this.$route.path == '/faq'" href="https://parkpeople.ca/paradesfr">FR</a>
-                    <a v-else href="https://parkpeople.ca/paradesfr">FR</a>
+                    <a v-if="this.$route.path == '/faq'" href="https://parkpeople.ca/paradedecitrouilles/">FR</a>
+                    <a v-else href="https://parkpeople.ca/paradedecitrouilles/">FR</a>
                 </div>
                 <a href="https://parkpeople.ca/listings" class="navigation-register">Create/Register a group</a>
                 <a href="https://parkpeople.ca" class="navbar-item park-logo"><img src="src/assets/parkpeople.png" alt=""></a>
