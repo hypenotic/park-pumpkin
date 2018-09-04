@@ -74,20 +74,7 @@
 				</div>
 			</div>
 		</section>
-
-		<section class="event-templates">
-			<div class="event-templates__container">
-				<h2 v-html="data.meta_box._page_tri_section[1]._page_tri_section_heading"></h2>
-				<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-					<div v-for="bucket in data.meta_box._page_tri_section[1]._page_triple" :key="bucket.bucket_copy">
-						<h3 v-html="bucket._page_tri_heading"></h3>
-						<!-- <p v-html="bucket._page_tri_copy"></p> -->
-						<a :href="bucket._page_tri_button_link" @click="downloadArea(bucket._page_tri_heading)" v-html="bucket._page_tri_button_text"></a>
-					</div>
-				</div> 
-			</div>
-		</section>
-
+		
 		<section class="grants-newsletter">
 			<div class="container">
 				<p>Want to stay up-to-date on Park People news?</p>
