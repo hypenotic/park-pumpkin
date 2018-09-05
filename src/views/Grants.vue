@@ -44,7 +44,7 @@
 					</div>
 					<div class="split-ig">
 						<div class="split-ig--text">
-							<p>#pumpkinparade</p>
+							<p>#pumpkinparades</p>
 							<a href="http://instagram.com/parkpeopleto"><i class="fa fa-instagram" aria-hidden="true"></i> See all</a>
 						</div>
 						<img src="src/assets/park_ig.png" alt="">
