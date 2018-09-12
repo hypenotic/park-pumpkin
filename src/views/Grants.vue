@@ -21,7 +21,7 @@
             </div>
         </section> -->
 		
-		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;z-index: 5000;">
+		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;">
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
 				<h1 v-html="data.meta_box._page_grant_heading"></h1>
