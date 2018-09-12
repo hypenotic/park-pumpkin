@@ -550,6 +550,7 @@
                 })
 
                 app.map.fitBounds(bounds);
+                // app.map.setZoom(2);
 
                 console.log('inRange', inRange);
                 app.$store.dispatch("setActiveEvents", inRange );
@@ -684,7 +685,7 @@
                 } else {
                     header = '<h6 style="margin-bottom: 10px;font-size: 16px;"><a href="https://parkpeople.ca/listings/events/?n='+ slug + '&id='+ id +'&tdgrant=true" target="_blank">'+ title +'</a></h6>';
                 }
-                return '<div style="width: 250px;">' + header +'<p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-users"></i> <a href="https://parkpeople.ca/listings/groups/?n='+groupSlug+'&id='+groupID+'&tdgrant=true" target="_blank" style="font-weight: bold;">'+groupName+'</a></p><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-calendar-o" aria-hidden="true"></i> '+  startDate +'</p><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-clock-o" aria-hidden="true"></i> '+startTime+' - '+endTime+'</p><span style="display:none;">'+timeframe+'</span><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-map-marker" aria-hidden="true"></i> '+address+'</p></div>';
+                return '<div style="width: 250px;color: grey;">' + header +'<p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-users"></i> <a href="https://parkpeople.ca/listings/groups/?n='+groupSlug+'&id='+groupID+'&tdgrant=true" target="_blank" style="font-weight: bold;">'+groupName+'</a></p><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-calendar-o" aria-hidden="true"></i> '+  startDate +'</p><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-clock-o" aria-hidden="true"></i> '+startTime+' - '+endTime+'</p><span style="display:none;">'+timeframe+'</span><p style="margin:0;font-size:12px;line-height: 1.5;"><i class="fa fa-map-marker" aria-hidden="true"></i> '+address+'</p></div>';
             },
             rebuildMarkers(){
                 let app = this;

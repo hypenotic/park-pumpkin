@@ -273,6 +273,12 @@ export default {
 
 .map-section {
 	margin-top: -250px;
+	position: relative;
+    z-index: 2;
+}
+
+.gm-style-iw {
+	color: $black;
 }
 
 .herosearch > input[type="text"]{
