@@ -12,7 +12,7 @@ export const state = {
     locationList: null,
     resourceList: [],
     singlePostCache: {},
-    igphotos: []
+    igphotos: null
 }
 
 // Should we split these up into modules?
