@@ -2,6 +2,8 @@ import * as types from './mutation-types'
 import axios from 'axios';
 // import _ from 'lodash';
 
+const igregex = /(http[^"]*\.jpg)(?=","config_width":320)/g;
+
 export const actions = {
     getLocations({commit, dispatch, context, state}, info) {
         console.log('getLocations dispatched');
@@ -60,5 +62,7 @@ export const actions = {
     setActiveEvents({commit, dispatch, context, state}, list) {
         console.log('setActiveList dispatched',list);
         commit(types.SET_ACTIVE_LIST, list);
-    }
+    },
+    scrapeInstagram({state, commit}) { 
+        axios.get("https://www.instagram.com/explore/tags/pumpkinparades/").then( ({data}) => (data.match(igregex)) ).then( res => commit("pushIgphotos", res) ) }
 }

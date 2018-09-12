@@ -9,6 +9,8 @@ export const SET_LOAD_STATUS = 'SET_LOAD_STATUS';
 export const SET_LOCATION_LIST = 'SET_LOCATION_LIST';
 export const SET_RESOURCES = 'SET_RESOURCES';
 export const TOGGLE_LANGUAGE = 'TOGGLE_LANGUAGE';
+export const pushIgphotos = 'pushIgphotos';
+
 
 
 

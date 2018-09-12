@@ -11,7 +11,8 @@ export const state = {
     listViewState: false,
     locationList: null,
     resourceList: [],
-    singlePostCache: {}
+    singlePostCache: {},
+    igphotos: []
 }
 
 // Should we split these up into modules?

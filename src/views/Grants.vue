@@ -47,7 +47,10 @@
 							<p>#pumpkinparades</p>
 							<a href="https://www.instagram.com/parkppl/"><i class="fa fa-instagram" aria-hidden="true"></i> See all</a>
 						</div>
-						<img src="src/assets/park_ig.png" alt="">
+						<!-- <img src="src/assets/park_ig.png" alt=""> -->
+						<a href="https://www.instagram.com/explore/tags/pumpkinparades/" class="ig-feed" target="_blank">
+							<img v-for="(pic, index) in IG.slice(0, 6)" :src="pic" :key="index" alt="">
+						</a>
 					</div>
 				</div>
 			</div>
@@ -196,7 +199,9 @@ export default {
 		},
 	},
 	computed: {
-
+		IG(){
+			return this.$store.getters.photosIG;
+		}
     },
 	methods: {
 		downloadArea(name) {

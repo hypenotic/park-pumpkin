@@ -12,9 +12,11 @@ import {
     SET_LIST_STATE,
     SET_RESOURCES, 
     TOGGLE_LANGUAGE, 
+    pushIgphotos
 } from './mutation-types'
 
 export const mutations = {
+    pushIgphotos: (state, obj) => { state.igphotos = obj },
     ADD_SINGLE_RESOURCE(state, post, id) {
         let copy = state.singlePostCache
         // Check if key/post exist already

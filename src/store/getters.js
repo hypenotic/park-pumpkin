@@ -13,5 +13,8 @@ export const getters = {
     },
     activeInfoWindows: state => {
         return state.activeInfoWindows
+    },
+    photosIG: state => {
+        return state.igphotos
     }
 }
