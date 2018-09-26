@@ -112,9 +112,15 @@
     }
 
     footer {
-        font-size: 0.8rem;
+        font-size: 16px;
+        @media #{$medium-and-up} {
+			font-size: 0.8rem;
+		}
         p, ul, li {
-            font-size: 0.8rem;
+            font-size: 16px;
+            @media #{$medium-and-up} {
+                font-size: 0.8rem;
+            }
         }
         ul + ul {
             margin-top: 16px;
@@ -123,7 +129,10 @@
 
     footer {
         position: relative;
-        padding-top: 150px;
+        padding-top: 100px;
+        @media #{$medium-and-up} {
+			 padding-top: 150px;
+		}
         > div {
             position: relative;
             &:before {

@@ -21,7 +21,7 @@
             </div>
         </section> -->
 		
-		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-image: url();background-size: cover; position: relative;">
+		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-repeat:repeat; position: relative;" class="hero">
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
 				<h1 v-html="data.meta_box._page_grant_heading"></h1>
@@ -254,10 +254,22 @@ export default {
 @import '../styles/variables.scss';
 @import '../styles/views/home.scss';
 
+.hero {
+	@media #{$small-and-down} {
+		min-height: 80vh;
+		padding-top: 300px;
+		background-image: url('https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg');
+	}
+}
+
 .main-banner {
 	width: 100%;
 	position: relative;
 	z-index: 10;
+	@media #{$small-and-down} {
+		position: absolute;
+		top: 0;
+	}
 }
 
 .banner-text {
@@ -266,15 +278,23 @@ export default {
 	max-width: 80%;
 	left: calc(10%);
 	top: calc(45% - 150px);
+	@media #{$small-and-down} {
+		padding-top: 150px;
+	}
 	h1 {
-		font-size: 60px;
+		font-size: 30px;
+		@media #{$large-and-up} {
+			font-size: 60px;
+		}
 	}
 }
 
 .map-section {
-	margin-top: -250px;
 	position: relative;
-    z-index: 2;
+	z-index: 2;
+	@media #{$large-and-up} {
+		margin-top: -250px;
+	}
 }
 
 .gm-style-iw {

@@ -19,10 +19,6 @@
             </ul>
         </div>
 
-         <div id="mobile-menu-trigger" v-on:click="showMobileMenu = !showMobileMenu">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </div>
-
         <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'menu-open': showMobileMenu }">
             <div class="navbar-end">
                 <a href="https://parkpeople.ca/listings" class="navigation-register">Create/Register a group</a>
@@ -48,10 +44,6 @@
                 <li><a href="https://twitter.com/Park_People" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 <li><a href="https://www.facebook.com/ParkPeopleCA" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
             </ul>
-        </div>
-
-         <div id="mobile-menu-trigger" v-on:click="showMobileMenu = !showMobileMenu">
-            <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
 
         <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'menu-open': showMobileMenu }">
