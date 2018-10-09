@@ -5,8 +5,11 @@
             <section class="google-map" id="grants-map"></section>
             <app-map-list></app-map-list>
             <div class="loading" v-bind:class="{ 'active-loader': showLoader }">Loading&#8230;</div>
-            <!-- <input id="pac-input" class="controls wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" type="text" placeholder="Enter your address to find park events near you." style="position: absolute; top: 0; z-index: 15;"> -->
             <button id="reset-location" class="button hidden-reset-loc" style="position: absolute; z-index: 1;">Reset Map</button>
+            <button id="change-area" class="button" @click="toggleArea">
+                <span v-if="!torontoCheck">Parades outside of Toronto</span>
+                <span v-else>Toronto Parades</span>
+            </button>
         </div>
     </section>
 </template>
@@ -17,25 +20,27 @@
     export default {
         components: {
             appFilter: Filter,
-            appMapList: MapList
+            appMapList: MapList,
         },
         props: {
+            // 43.7384117,-79.4154781
+            // 43.52385109999999, -79.71254299999998
             'latitude': {
                 type: Number,
                 default: function(){
-                return 43.52385109999999
+                return 43.7384117
                 }
             },
             'longitude': {
                 type: Number,
                 default: function(){
-                return -79.71254299999998
+                return -79.4154781
                 }
             },
             'zoom': {
                 type: Number,
                 default: function(){
-                return 4
+                return 11
                 }
             }
         },
@@ -50,10 +55,10 @@
                 posts: [],
                 showLoader: false,
                 showList: false,
-                bluePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
-                orangePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
-                greenPin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                pin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                // morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/more_events_marker.svg',
                 morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                torontoCheck: false
             }
         },
         mounted() {
@@ -62,7 +67,7 @@
             // const mapCentre = this.markerCoordinates[0]
             const options   = {
                 // How zoomed in you want the map to start at (always required)
-                zoom: 4,
+                zoom: this.zoom,
                 mapTypeControl: false,
                 scrollwheel:  false,
                 // draggable: isDraggable,
@@ -249,20 +254,12 @@
             let input = document.getElementById('pac-input');
             app.searchBox = new google.maps.places.SearchBox(input);
             app.searchBox.addListener('places_changed', function() {
-                // app.triggerSearch();
-                // console.log('places changed!');
                 app.chooseFilter();
             });
             // Listen for when the reset location button is pressed
             document.getElementById("reset-location").onclick = function() {
                 app.triggerSearchReset();
-                // app.chooseFilter();
             };
-            // Listen for when the filter submit button is pressed
-            // document.getElementById("apply-search").onclick = function() {
-            //     // app.applyFilters();
-            //     app.chooseFilter();
-            // };
 
             app.map = new google.maps.Map(element, options);
             
@@ -289,26 +286,29 @@
             app.buildMarkers();
         },
         methods: {
+            toggleArea(){
+                if (this.torontoCheck == true) {
+                    this.torontoCheck = false;
+                    this.chooseFilter();
+                } else {
+                    this.torontoCheck = true;
+                    this.chooseFilter();
+                }
+            },
             chooseFilter() {
                 let app = this;
                 // Check if there is a value in the searchbox and checked checkboxes
                 let input = document.getElementById('pac-input');
                 let value = input.value;
-                let checkboxes = document.getElementsByClassName('ck-box');
-                let check = [];
-                for(var i = 0; i < checkboxes.length; i++) {
-                    if (checkboxes[i].checked == true) {
-                        check.push(i);
-                    }
-                }
+                let areaCheck = app.torontoCheck;
 
-                if (value.length==0 && check.length > 0) {
-                    // If search bar is empty, and activities are checked 
-                    console.log(1, 'no search, yes activities');
+                if (value.length==0 && areaCheck) {
+                    // There is no address and locations are Canada-wide
+                    console.log('CF1');
                     app.applyFilters();
-                } else if (value.length>0 && check.length > 0) {
-                    // If both search bar and activities are full
-                    console.log(2, 'yes search, yes activities');
+                } else if (value.length==0 && !areaCheck) {
+                    // There is no address and locations are in Toronto
+                    console.log('CF2');
                     // Make sure we unhide the reset map button
                     let reset = document.getElementById('reset-location');
                     if (reset.classList.contains('hidden-reset-loc')) {
@@ -316,102 +316,43 @@
                     }
                     // Apply filters
                     app.applyFilters();
-                } else if (value.length>0 && check.length == 0) {
-                    // If search bar is not empty, and activities are not checked
-                    console.log(3, 'yes search, no activities');
-                    // Trigger Search
+
+                } else if (value.length>0 && areaCheck) {
+                    console.log('CF3');
+                    // There is an address and locations are Canada-wide
                     app.triggerSearch();
                 } else {
-                    console.log(4, 'catch all - initial render?');
-                    // Fire this in mounted()
-                    app.resetMarkers();
+                    console.log('CF4');
+                    // There is an address and locations are in Toronto
+                    app.triggerSearch();
                 }
-            },
-            showAll() {
-                console.log('showAll');
-                let app = this;
-            },
-            hideOutsideRadius(places) {
-                console.log('hideOutsideRadius');
-                let app = this;
-                
-                var placeLat = places[0].geometry.location.lat();
-                var placeLng = places[0].geometry.location.lng();
-
-                var originPlace = new google.maps.LatLng(placeLat, placeLng);
-
-                let active = [];
-
-                for (var i=0; i < app.locations.length; i++) {
-                    let newPlace = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
-                    var distanceBT = google.maps.geometry.spherical.computeDistanceBetween(originPlace, newPlace);
-
-                    if (distanceBT > 5000) {
-                        // app.markers[i].setVisible(false);
-                    } else {
-                        active.push(app.locations[i]);
-                    }
-                }
-
-                return active;
-                // send active to activeList prop in state
-                // Make sure activeList is what buildMarkers uses
-
-                // app.buildMarkers();
             },
             applyFilters(filtered = null) {
                 let app = this;
 
                 console.log('applyFilters');
 
-                // Close the activity filter
-                if (this.$store.state.filterViewState == true) {
-                    this.$store.dispatch("filterViewState",this.$store.state.filterViewState );
-                }
-                
-                // Make sure the searchbox shrinks
                 let input = document.getElementById('pac-input');
-                if (input.classList.contains('small-search')) {
-                } else {
-                    input.classList.add('small-search');
-                }
-
-                // Grab the IDs of the checked activities
-                let nameArray = app.$store.state.checkedActivityList;
-
-                // This function tests whether two array have at least one matching value
-                let findOne = function (haystack, arr) {
-                    return arr.some(function (v) {
-                        return haystack.indexOf(v) >= 0;
-                    });
-                }
 
                 // Check if there is a value in the searchbox and checked checkboxes
                 let value = input.value;
-                let checkboxes = document.getElementsByClassName('ck-box');
-                let check = [];
-                for(var i = 0; i < checkboxes.length; i++) {
-                    if (checkboxes[i].checked == true) {
-                        check.push(i);
-                    }
-                }
+                let areaCheck = app.torontoCheck;
 
-                if ((value.length == 0 && check.length == 0) || (value.length==0 && check.length > 0) ) {
+                if ((value.length == 0 && areaCheck) || (value.length==0 && !areaCheck) ) {
                     console.log('Filter Option 1');
 
                     app.clearMarkers();
 
                     let active = [];
-                    for (var i=0; i<app.locations.length; i++) {
-                        // Grab the array of activity (taxonomy) IDs
-                        let combined = app.locations[i].activity;
-                        // Compare both 
-                        var test = findOne(combined,nameArray);
-                        // If false, event does not include at least one of the 
-                        // activities in the checkedActivityList array in the store
-                        if (test !== false) {
-                            console.log('activityMatch', app.locations[i]);
-                            active.push(app.locations[i]);
+
+                    if (areaCheck) {
+                        active = app.locations;
+                    } else {
+                        for (var i=0; i<app.locations.length; i++) {
+                            console.log(i);
+                            if (app.locations[i].pc.startsWith("M")) {
+                                active.push(app.locations[i]);
+                            }
                         }
                     }
 
@@ -431,30 +372,8 @@
 
                     let active = [];
                     for (var i=0; i<app.locations.length; i++) {
-                        // Grab the array of activity (taxonomy) IDs
-                        let combined = app.locations[i].activity;
-                        // Compare both 
-                        var test = findOne(combined,nameArray);
-
-                        let newPlace = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
-                        var distanceBT = google.maps.geometry.spherical.computeDistanceBetween(originPlace, newPlace);
                         
-                        // If false, event does not include at least one of the 
-                        // activities in the checkedActivityList array in the store
-                        if (test == false || distanceBT > 5000) {
-                            // app.markers[i].setVisible(false);
-                        } else {
-                            // bounds.extend( app.markers[i].getPosition()); 
-                            active.push(app.locations[i]);
-                        }
                     }
-
-                    // console.log(bounds);
-                    // if (bounds.b.b != 180 ) {
-                    //     app.map.fitBounds(bounds);
-                    // } else {
-                    //     // TKISSUE
-                    // }
 
                     console.log('activityMatch', active);
                     app.$store.dispatch("setActiveEvents", active );
@@ -469,6 +388,50 @@
                     console.log('Filter Option 5');
                 }    
 
+            },
+            showAll() {
+                console.log('showAll');
+                let app = this;
+            },
+            hideOutsideRadius(places) {
+                console.log('hideOutsideRadius');
+                let app = this;
+                
+                var placeLat = places[0].geometry.location.lat();
+                var placeLng = places[0].geometry.location.lng();
+
+                var originPlace = new google.maps.LatLng(placeLat, placeLng);
+
+                let areaCheck = app.torontoCheck;
+                let active = [];
+
+                if (areaCheck) {
+                    for (var i=0; i < app.locations.length; i++) {
+                        let newPlace = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
+                        var distanceBT = google.maps.geometry.spherical.computeDistanceBetween(originPlace, newPlace);
+
+                        if (distanceBT > 5000) {
+                            // app.markers[i].setVisible(false);
+                        } else {
+                            active.push(app.locations[i]);
+                        }
+                    }
+                } else {
+                    for (var i=0; i < app.locations.length; i++) {
+                        if (app.locations[i].pc.startsWith("M")) {
+                            let newPlace = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
+                            var distanceBT = google.maps.geometry.spherical.computeDistanceBetween(originPlace, newPlace);
+
+                            if (distanceBT > 5000) {
+                                // app.markers[i].setVisible(false);
+                            } else {
+                                active.push(app.locations[i]);
+                            }
+                        }
+                    }
+                }
+
+                return active;
             },
             triggerSearchReset() {
                 let app = this;
@@ -495,10 +458,6 @@
                 console.log('places: ', places.length, places);
 
                 let input = document.getElementById('pac-input');
-                if (input.classList.contains('small-search')) {
-                } else {
-                    input.classList.add('small-search');
-                }
                 
                 let reset = document.getElementById('reset-location');
                 if (reset.classList.contains('hidden-reset-loc')) {
@@ -538,19 +497,9 @@
                         position: place.geometry.location,
                     }));
 
-                    // var markerLabel = "YOU";
-                    // var marker = new google.maps.Marker({
-                    //     map: app.map,
-                    //     icon: here,
-                    //     zIndex: 1,
-                    //     position: place.geometry.location,
-                    // });
-                    // app.markers.push(marker);
-                    // app.oms.addMarker(marker);
                 })
 
                 app.map.fitBounds(bounds);
-                // app.map.setZoom(2);
 
                 console.log('inRange', inRange);
                 app.$store.dispatch("setActiveEvents", inRange );
@@ -568,90 +517,76 @@
                     Iterate over all of the events
                 */
                 for( var i = 0; i < app.locations.length; i++ ){
-                    /*
-                        Set marker position
-                    */
-                    let theposition = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
 
-                    /*
-                        Choose marker style based on type
-                    */
-                    if (app.locations[i].type == 'event') {
-                        
-                        let the_icon = '';
-                        if (app.locations[i].timeframe == 'morethan30') {
-                            the_icon = app.bluePin;
-                        } else if (app.locations[i].timeframe == 'within30') {
-                            the_icon = app.orangePin;
+                    // Check is event is in TO
+                    if (app.locations[i].pc.startsWith("M") && !app.torontoCheck) {
+
+                        /*
+                        Set marker position
+                        */
+                        let theposition = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
+
+                        /*
+                            Choose marker style based on type
+                        */
+                        if (app.locations[i].type == 'event') {
+                            
+                            let the_icon = app.pin;
+
+                            /*
+                                Create the marker for each of the locations and set the
+                                latitude and longitude to the latitude and longitude
+                                of the location. Also set the map to be the local map.
+                            */
+                            
+                            let iconSize = new google.maps.Size(42, 40);
+                            let marker = new google.maps.Marker({
+                                position: theposition,
+                                map: app.map,
+                                title: app.locations[i].title,
+                                icon: {
+                                    url: the_icon,  
+                                    scaledSize: iconSize
+                                }
+                            });
+
+                            /*
+                                Push the new marker on to the array.
+                            */
+                            app.markers.push( marker );
+
+                            /*
+                                Create the info window and add it to the local
+                                array.
+                            */
+                            // console.log(app.locations[i].listing);
+                            let windowString = app.infoWindowString(app.locations[i].slug,app.locations[i].id,app.locations[i].title,app.locations[i].listing[1],app.locations[i].listing[2],app.locations[i].listing[0],app.locations[i].nice_start_date,app.locations[i].start_time,app.locations[i].end_time,app.locations[i].address,app.locations[i].timeframe);
+
+                            let infoWindow = new google.maps.InfoWindow({
+                                content: windowString
+                            });
+
+                            app.infoWindows.push( infoWindow );
+                            
+                            /*
+                            Add the event listener to open the info window for the marker.
+                            */   
+                            google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
+                                return function() {
+                                    infoWindow.setContent(windowString);
+                                    infoWindow.open(app.map, marker);
+                                }
+                            })(marker, i));
+                            
+                            app.oms.addMarker(marker);
+
                         } else {
-                            the_icon = app.greenPin; 
+                            return
                         }
 
-                        /*
-                            Create the marker for each of the locations and set the
-                            latitude and longitude to the latitude and longitude
-                            of the location. Also set the map to be the local map.
-                        */
-                        
-                        let iconSize = new google.maps.Size(42, 40);
-                        let marker = new google.maps.Marker({
-                            position: theposition,
-                            map: app.map,
-                            title: app.locations[i].title,
-                            icon: {
-                                url: the_icon,  
-                                scaledSize: iconSize
-                            }
-                        });
-
-                        /*
-                            Push the new marker on to the array.
-                        */
-                        app.markers.push( marker );
-
-                        /*
-                            Create the info window and add it to the local
-                            array.
-                        */
-                        // console.log(app.locations[i].listing);
-                        let windowString = app.infoWindowString(app.locations[i].slug,app.locations[i].id,app.locations[i].title,app.locations[i].listing[1],app.locations[i].listing[2],app.locations[i].listing[0],app.locations[i].nice_start_date,app.locations[i].start_time,app.locations[i].end_time,app.locations[i].address,app.locations[i].timeframe);
-
-                        let infoWindow = new google.maps.InfoWindow({
-                            content: windowString
-                        });
-
-                        app.infoWindows.push( infoWindow );
-                        
-                        /*
-                        Add the event listener to open the info window for the marker.
-                        */   
-                        google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
-                            return function() {
-                                infoWindow.setContent(windowString);
-                                infoWindow.open(app.map, marker);
-                            }
-                        })(marker, i));
-                        
-                        app.oms.addMarker(marker);
-
-                    } else {
-                        return
-                    }
+                    } //end STARTWITH
 
                 }
-
-                // app.oms.addListener('format', function(marker, status) {
-                //     var iconURL = status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIED ? app.bluePin :
-                //         status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE ? app.morePin :
-                //         status == OverlappingMarkerSpiderfier.markerStatus.UNSPIDERFIABLE ? app.orangePin :
-                //         app.greenPin;
-                //     marker.setIcon({
-                //         url: iconURL,
-                //         scaledSize: new google.maps.Size(23, 32)  // makes SVG icons work in IE
-                //     });
-                // });
-
-                this.map.panBy(-80, -200);
 
             },
             clearMarkers(){
@@ -690,14 +625,15 @@
             rebuildMarkers(){
                 let app = this;
                 console.log('rebuild markers', app.activeMarkers)
-
-                // this.clearMarkers();
                 
                 // COMMINGTING THIS OUT MADE THE PLACES DISAPPEAR
                 // app.markers = [];
                 // app.infoWindows = [];
 
                 let bounds = new google.maps.LatLngBounds();
+
+                // Check is event is in TO
+                // if (app.locations[i].pc.startsWith("M") && !app.torontoCheck) { }
 
                 /*
                     Iterate over all of the events
@@ -714,14 +650,7 @@
                     */
                     if (app.activeMarkers[i].type == 'event') {
                         
-                        let the_icon = '';
-                        if (app.activeMarkers[i].timeframe == 'morethan30') {
-                            the_icon = app.bluePin;
-                        } else if (app.activeMarkers[i].timeframe == 'within30') {
-                            the_icon = app.orangePin;
-                        } else {
-                            the_icon = app.greenPin; 
-                        }
+                        let the_icon = app.pin;
 
                         /*
                             Create the marker for each of the locations and set the
@@ -741,29 +670,16 @@
                             flag: app.activeMarkers[i].timeframe
                         });
 
-                        // let the_icon = '';
-                        // let flag = '';
-                        // if (app.activeMarkers[i].timeframe == 'morethan30') {
-                        //     the_icon = app.bluePin;
-                        //     flag = 'morethan30';
-                        // } else if (app.activeMarkers[i].timeframe == 'within30') {
-                        //     the_icon = app.orangePin;
-                        //     flag = 'within30';
-                        // } else {
-                        //     the_icon = app.greenPin; 
-                        //     flag = 'past';
-                        // }
-
                         let iconSize = new google.maps.Size(45, 42);
                         let iconURL = '';
                         let special = app.morePin;
                         google.maps.event.addListener(marker, 'spider_format', function(status) {
                             console.log('single_marker:', marker);
                             if (status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE) {
-                                iconSize = new google.maps.Size(100, 100);
+                                // iconSize = new google.maps.Size(100, 100);
                                 iconURL = special;
                                 // iconURL = the_icon;
-                                // iconSize = new google.maps.Size(45, 42);
+                                iconSize = new google.maps.Size(45, 42);
                             } else {
                                 iconSize = new google.maps.Size(45, 42);
                                 iconURL = the_icon;
@@ -813,21 +729,15 @@
                         return
                     }
 
-                    let iconURL = '';
+                    let iconURL = app.pin;
                     let iconSize = '';
                     app.oms.addListener('format', function(marker, status) {
                         // console.log(marker);
                         if (status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE) {
-                            iconSize = new google.maps.Size(100, 100);
+                            // iconSize = new google.maps.Size(100, 100);
+                            iconSize = new google.maps.Size(45, 42);
                             iconURL = app.morePin;
                         } else {
-                            if (marker.flag == 'morethan30') {
-                                iconURL = app.bluePin;
-                            } else if (marker.flag == 'within30') {
-                                iconURL = app.orangePin;
-                            } else {
-                                iconURL = app.greenPin; 
-                            }
                             iconSize = new google.maps.Size(45, 42);
                         }
                         marker.setIcon({
@@ -869,14 +779,7 @@
                     */
                     if (app.locations[i].type == 'event') {
                         
-                        let the_icon = '';
-                        if (app.locations[i].timeframe == 'morethan30') {
-                            the_icon = app.bluePin;
-                        } else if (app.locations[i].timeframe == 'within30') {
-                            the_icon = app.orangePin;
-                        } else {
-                            the_icon = app.greenPin; 
-                        }
+                        let the_icon = app.pin;
 
                         /*
                             Create the marker for each of the locations and set the
@@ -959,7 +862,7 @@
                 let LatLng = new google.maps.LatLng(43.52385109999999,-79.71254299999998);
                 // Position the map accordingly
                 app.map.panTo(LatLng);
-                app.map.setZoom(4);
+                app.map.setZoom(10);
                 app.map.panBy(-80, -120);
 
                 let empty = [];
@@ -1065,7 +968,7 @@
 
                 }
 
-                this.map.panBy(-80, -120);
+                // this.map.panBy(-80, -220);
 
             }
         },

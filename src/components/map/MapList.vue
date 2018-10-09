@@ -1,6 +1,6 @@
 <template>
     <section class="map-list">
-        <h3>Upcoming Parades</h3>
+        <h3>Parades</h3>
         <div class="map-list-container" v-if="activeMarkers.length == 0">
             <!-- <div class="empty-message" v-if="activeMarkers.length == 0">No events match your search.</div> -->
             <app-card v-for="item in locations" :key="item.id" v-if="item.timeframe != 'past'" :item="item"></app-card>
@@ -8,15 +8,6 @@
         <div class="map-list-container" v-else>
             <!-- <div class="empty-message" v-if="activeMarkers.length == 0">No events match your search.</div> -->
             <app-card v-for="item in activeMarkers" :key="item.id" v-if="item.timeframe != 'past'" :item="item"></app-card>
-        </div>
-        <h3>Past Parades</h3>
-        <div class="map-list-container" v-if="activeMarkers.length == 0">
-
-            <app-card v-for="item in locations" :key="item.id" v-if="item.timeframe == 'past'" :item="item"></app-card>
-        </div>
-        <div class="map-list-container" v-else>
-            <!-- <div class="empty-message" v-if="activeMarkers.length == 0">No events match your search.</div> -->
-            <app-card v-for="item in activeMarkers" :key="item.id" v-if="item.timeframe == 'past'" :item="item"></app-card>
         </div>
     </section>
 </template>

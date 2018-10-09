@@ -219,27 +219,6 @@ export default {
 			this.data = response.data;
 			
 			this.loading = false;
-
-			axios.all([
-				axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/case-study/?_embed&categories=133&per_page=20'),
-				axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/research/?_embed&categories=133&per_page=20'),
-				axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/resource/?_embed&categories=133&per_page=20')
-			])
-			.then(axios.spread((response, response1, response2) => {
-				// console.log(response.data)
-				let allPosts  = response.data.concat(response1.data, response2.data);
-				// console.log('old', allPosts)
-				allPosts.sort(function(a,b){
-					return new Date(b.date) - new Date(a.date)
-				})	
-				// console.log('sorted', allPosts)
-				this.relatedPosts = allPosts
-			}))
-			.catch(e => {
-				console.log(e)
-				this.errors.push(e)
-			})
-
 		})
 		.catch(e => {
 			console.log(e)
