@@ -282,7 +282,7 @@ export default {
 
 .herosearch > input[type="text"]{
         font-family: "Comfortaa";
-        width: 30rem;
+        width: 100%;
         margin-top: 2rem;
         font-size: 24px;
         border:0;
@@ -294,7 +294,10 @@ export default {
         background-repeat: no-repeat;
         padding: 1rem;
         border-radius: 1rem;
-        color: #fff;
+		color: #fff;
+		@media #{$medium-and-up} {
+			width: 30rem;
+		}
     }
     .herosearch > input[type="submit"]{
         vertical-align: baseline;

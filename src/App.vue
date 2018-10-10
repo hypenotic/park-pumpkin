@@ -34,6 +34,7 @@
 </script>
 
 <style lang="scss">
+    @import './styles/variables.scss';
     /* ----- defs */
     
     @keyframes twinkle{
@@ -267,9 +268,9 @@
 
     #pac-input {
         font-family: "Comfortaa";
-        width: 30rem;
+        width: 100%;
         margin-top: 2rem;
-        font-size: 20px;
+        font-size: 14px;
         border:0;
         background-color: rgba(255,255,255,0.1);
         background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png);
@@ -281,6 +282,10 @@
         color: #fff;
         // position: relative;
         // z-index: 100000000;
+        @media #{$medium-and-up} {
+            width: 30rem;
+            font-size: 20px;
+		}
     }
 
     table.gsc-completion-container {

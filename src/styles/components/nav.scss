@@ -42,7 +42,10 @@ nav#scrolling {
     @media #{$medium-and-down} {
         display: flex;
         align-items: center;
-        position: relative;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgb(0, 30, 96);
         z-index: 5000;
     }
 }
@@ -110,6 +113,7 @@ nav#scrolling {
     margin-left: 8px; 
     @media #{$small-and-down} {
         width: 200px;
+        height: auto;
 	}
     @media #{$large-and-up} {
 		height: 50px;

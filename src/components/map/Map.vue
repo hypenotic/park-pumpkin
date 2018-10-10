@@ -304,27 +304,31 @@
 
                 if (value.length==0 && areaCheck) {
                     // There is no address and locations are Canada-wide
-                    console.log('CF1');
+                    console.log('CF1 - yes address, Canada-wide');
                     app.applyFilters();
                 } else if (value.length==0 && !areaCheck) {
                     // There is no address and locations are in Toronto
-                    console.log('CF2');
+                    console.log('CF2 - no address, TO');
+                    // Apply filters
+                    app.applyFilters();
+                } else if (value.length>0 && areaCheck) {
+                    console.log('CF3 - yes address, Canada-wide');
+                    // There is an address and locations are Canada-wide
+                    app.triggerSearch();
                     // Make sure we unhide the reset map button
                     let reset = document.getElementById('reset-location');
                     if (reset.classList.contains('hidden-reset-loc')) {
                         reset.classList.remove('hidden-reset-loc');
                     }
-                    // Apply filters
-                    app.applyFilters();
-
-                } else if (value.length>0 && areaCheck) {
-                    console.log('CF3');
-                    // There is an address and locations are Canada-wide
-                    app.triggerSearch();
                 } else {
-                    console.log('CF4');
+                    console.log('CF4 - yes address, TO');
                     // There is an address and locations are in Toronto
                     app.triggerSearch();
+                    // Make sure we unhide the reset map button
+                    let reset = document.getElementById('reset-location');
+                    if (reset.classList.contains('hidden-reset-loc')) {
+                        reset.classList.remove('hidden-reset-loc');
+                    }
                 }
             },
             applyFilters(filtered = null) {
@@ -436,10 +440,11 @@
             triggerSearchReset() {
                 let app = this;
                 console.log('resetting location');
-
-                let input = document.getElementById('pac-input');
-                input.value ='';
-                input.focus();
+                
+                // Automatic focus on search field 
+                // let input = document.getElementById('pac-input');
+                // input.value ='';
+                // input.focus();
 
                 this.resetMarkers();
             },
@@ -752,6 +757,12 @@
             },
             resetMarkers(){
                 console.log('resetMarkers');
+                let reset = document.getElementById('reset-location');
+                if (reset.classList.contains('hidden-reset-loc')) {
+                    reset.classList.remove('hidden-reset-loc');
+                } else {
+                    reset.classList.add('hidden-reset-loc');
+                }
                 
                 let app = this;
                 
@@ -769,85 +780,69 @@
                     Iterate over all of the cafes
                 */
                 for( var i = 0; i < app.locations.length; i++ ){
-                    /*
-                        Set marker position
-                    */
-                    let theposition = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
-
-                    /*
-                        Choose marker style based on type
-                    */
-                    if (app.locations[i].type == 'event') {
-                        
-                        let the_icon = app.pin;
-
+                    if (app.locations[i].pc.startsWith("M")) {
                         /*
-                            Create the marker for each of the locations and set the
-                            latitude and longitude to the latitude and longitude
-                            of the location. Also set the map to be the local map.
+                            Set marker position
                         */
-                        var iconSize = new google.maps.Size(45, 42);
-                        var marker = new google.maps.Marker({
-                            position: theposition,
-                            map: app.map,
-                            title: app.locations[i].timeframe,
-                            icon: {
-                                url: the_icon,
-                                scaledSize: iconSize
-                            }
-                        });
+                        let theposition = new google.maps.LatLng(app.locations[i].lat, app.locations[i].lng);
 
                         /*
-                            Push the new marker on to the array.
+                            Choose marker style based on type
                         */
-                        app.markers.push( marker );
+                        if (app.locations[i].type == 'event') {
+                            
+                            let the_icon = app.pin;
 
-                        /*
-                            Create the info window and add it to the local
-                            array.
-                        */
-                        // console.log(app.locations[i].listing);
-                        let windowString = app.infoWindowString(app.locations[i].slug,app.locations[i].id,app.locations[i].title,app.locations[i].listing[1],app.locations[i].listing[2],app.locations[i].listing[0],app.locations[i].nice_start_date,app.locations[i].start_time,app.locations[i].end_time,app.locations[i].address,app.locations[i].timeframe);
+                            /*
+                                Create the marker for each of the locations and set the
+                                latitude and longitude to the latitude and longitude
+                                of the location. Also set the map to be the local map.
+                            */
+                            var iconSize = new google.maps.Size(45, 42);
+                            var marker = new google.maps.Marker({
+                                position: theposition,
+                                map: app.map,
+                                title: app.locations[i].timeframe,
+                                icon: {
+                                    url: the_icon,
+                                    scaledSize: iconSize
+                                }
+                            });
 
-                        let infoWindow = new google.maps.InfoWindow({
-                            content: windowString
-                        });
+                            /*
+                                Push the new marker on to the array.
+                            */
+                            app.markers.push( marker );
 
-                        app.infoWindows.push( infoWindow );
-                        
-                        /*
-                        Add the event listener to open the info window for the marker.
-                        */   
-                        google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
-                            console.log('hey');
-                            return function() {
-                                infoWindow.setContent(windowString);
-                                infoWindow.open(app.map, marker);
-                            }
-                        })(marker, i));
-                        // let theMap = this.map;
-                        // let infoWindow = new google.maps.InfoWindow();
-                        // this.oms.addListener('click', function(marker, event, i) {
-                        //     infoWindow.setContent('hey');
-                        //     infoWindow.open(theMap, marker);
-                        // });
-                        // bounds.extend( app.markers[i].getPosition()); 
-                        app.oms.addMarker(marker);
+                            /*
+                                Create the info window and add it to the local
+                                array.
+                            */
+                            // console.log(app.locations[i].listing);
+                            let windowString = app.infoWindowString(app.locations[i].slug,app.locations[i].id,app.locations[i].title,app.locations[i].listing[1],app.locations[i].listing[2],app.locations[i].listing[0],app.locations[i].nice_start_date,app.locations[i].start_time,app.locations[i].end_time,app.locations[i].address,app.locations[i].timeframe);
 
-                    } else {
-                        return
+                            let infoWindow = new google.maps.InfoWindow({
+                                content: windowString
+                            });
+
+                            app.infoWindows.push( infoWindow );
+                            
+                            /*
+                            Add the event listener to open the info window for the marker.
+                            */   
+                            google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
+                                console.log('hey');
+                                return function() {
+                                    infoWindow.setContent(windowString);
+                                    infoWindow.open(app.map, marker);
+                                }
+                            })(marker, i));
+                            app.oms.addMarker(marker);
+
+                        } else {
+                            return
+                        }
                     }
-
-                    // app.oms.addListener('format', function(marker, status) {
-                    //     var iconURL = status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIED ? app.bluePin :
-                    //         status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE ? app.morePin :
-                    //         status == OverlappingMarkerSpiderfier.markerStatus.UNSPIDERFIABLE ? app.orangePin :
-                    //         app.greenPin;
-                    //     marker.setIcon({
-                    //         url: iconURL,
-                    //         scaledSize: new google.maps.Size(23, 32)  // makes SVG icons work in IE
-                    //     });
-                    // });
 
                     let iconURL ='';
                     let iconSize = '';
@@ -859,11 +854,11 @@
                     Bring map back to original position
                 */ 
                 // Make a latlng from original co-ords
-                let LatLng = new google.maps.LatLng(43.52385109999999,-79.71254299999998);
+                let LatLng = new google.maps.LatLng(43.7384117,-79.4154781);
                 // Position the map accordingly
                 app.map.panTo(LatLng);
-                app.map.setZoom(10);
-                app.map.panBy(-80, -120);
+                app.map.setZoom(11);
+                // app.map.panBy(-80, -120);
 
                 let empty = [];
                 app.$store.dispatch("setActiveEvents", empty );
