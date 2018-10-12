@@ -137,7 +137,7 @@
 				</li>
 				<li class="second-sponsor">
 					<p>Media Sponsor</p>
-					<img src="src/assets/metroland_logo.jpg" alt="">
+					<img src="https://parkpeople.ca/listings/custom/uploads/2018/10/SML_Logo-ColourRGB.png" alt="">
 				</li>
 				<li>
 
