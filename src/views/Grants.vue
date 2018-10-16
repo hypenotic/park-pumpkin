@@ -64,7 +64,7 @@
 
 		<section class="event-templates event-templates--top">
 			<div class="event-templates__grad-container">
-				<p class="intro-blurb">If you want to host a Pumpkin Parade, check with your local municipality for local permit requirements. For City of Toronto Pumpkin Parade permits <a href="https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-park-recreation-facilities/simple-permit-booking/" target="_blank" class="plain">visit here</a>.</p>
+				<p class="intro-blurb">If you want to host a Pumpkin Parade, check with your local municipality for local permit requirements. Here is more information on <a href="https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-park-recreation-facilities/simple-permit-booking/" target="_blank" class="plain">City of Toronto Pumpkin Parade permits</a>.</p>
 				<div class="event-templates__container">
 					<h2 v-html="data.meta_box._page_tri_section[0]._page_tri_section_heading"></h2>
 					<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">

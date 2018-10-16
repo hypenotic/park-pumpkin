@@ -276,7 +276,6 @@ h1 {
 	text-align: center;
 	font-size: 0.8rem;
 	line-height: 1.5;
-	margin-top: 100px;
 	@media #{$medium-and-up} {
 		margin-top: 0px;
 		padding-top: 80px;
@@ -608,15 +607,22 @@ h1 {
 	text-align: center;
 	padding-top: 56px;
 	li:first-child {
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		img {
-			width: 25%;
-			margin: 2.5%;
-			max-width: 700px;
+			width: 70%;
 			height: auto;
+			margin: 1rem 0;
+		}
+		@media #{$medium-and-up} {
+            margin: 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			img {
+				width: 25%;
+				margin: 2.5%;
+				max-width: 700px;
+				height: auto;
+			}
 		}
 	}
 }

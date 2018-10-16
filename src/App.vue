@@ -365,5 +365,15 @@
     }
 
     /* footer */
-    
+    h2 {
+        @media #{$small-and-down} {
+            font-size: 30px;
+		}
+    }
+
+    a {
+        &:hover {
+            color: grey;
+        }
+    }
 </style>
