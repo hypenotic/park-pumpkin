@@ -587,6 +587,8 @@
                             google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
                                 return function() {
                                     closeInfoWindows();
+                                    app.map.setCenter(marker.getPosition());
+                                    app.map.panBy(0, -150);
                                     infoWindow.setContent(windowString);
                                     infoWindow.open(app.map, marker);
                                 }
@@ -601,6 +603,8 @@
                     } //end STARTWITH
 
                 }
+
+                this.map.panBy(100, -100);
 
             },
             clearMarkers(){
@@ -693,7 +697,7 @@
                         let iconURL = '';
                         let special = app.morePin;
                         google.maps.event.addListener(marker, 'spider_format', function(status) {
-                            console.log('single_marker:', marker);
+                            // console.log('single_marker:', marker);
                             if (status == OverlappingMarkerSpiderfier.markerStatus.SPIDERFIABLE) {
                                 // iconSize = new google.maps.Size(100, 100);
                                 iconURL = special;
@@ -703,14 +707,14 @@
                                 iconSize = new google.maps.Size(45, 42);
                                 iconURL = the_icon;
                             }
-                            console.log('status:', status, '- '+marker.title);
+                            // console.log('status:', status, '- '+marker.title);
                             marker.setIcon({
                                 url: iconURL,
                                 scaledSize: iconSize
                             });
                         });
 
-                        console.log('markers',app.markers);
+                        // console.log('markers',app.markers);
 
                         // I think only one pin is showing up because there is no count for markers [i]
 
@@ -734,8 +738,18 @@
                         /*
                         Add the event listener to open the info window for the marker.
                         */ 
+                        function closeInfoWindows(){
+                            var i = app.infoWindows.length;
+                            while(i--){
+                                app.infoWindows[i].close();
+                            }
+                        }
+
                         google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
                             return function() {
+                                closeInfoWindows();
+                                app.map.setCenter(marker.getPosition());
+                                app.map.panBy(0, -150);
                                 infoWindow.setContent(windowString);
                                 infoWindow.open(app.map, marker); 
                             }
@@ -855,6 +869,8 @@
                                 console.log('hey');
                                 return function() {
                                     closeInfoWindows();
+                                    app.map.setCenter(marker.getPosition());
+                                    app.map.panBy(0, -150);
                                     infoWindow.setContent(windowString);
                                     infoWindow.open(app.map, marker);
                                 }
