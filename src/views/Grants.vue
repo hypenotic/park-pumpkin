@@ -25,8 +25,11 @@
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
 				<h1 v-html="data.meta_box._page_grant_heading"></h1>
-				<input id="pac-input" type="text" name="findnear" placeholder="Find a pumpkin parade near you">
-				<input id="pac-submit" type="submit" value="">
+				<div>
+					<input id="pac-input" type="text" name="findnear" placeholder="Find a pumpkin parade near you*">
+					<input id="pac-submit" type="submit" value="">
+					<span class="km-note">* within 5km of address</span>
+				</div>
 			</div> 
 		</section>
 
@@ -421,4 +424,17 @@ export default {
 // #hero .blurb p{
 // 	margin: 0;
 // }
+
+.km-note {
+	position: absolute;
+	bottom: -1.5rem;
+	left: 0;
+	font-size: 11px;
+	opacity: 0.8;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255,255,255,0.7);
+    opacity: 1; /* Firefox */
+}
 </style>

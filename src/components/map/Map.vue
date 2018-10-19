@@ -499,7 +499,7 @@
                     app.markers.push(new google.maps.Marker({
                         map: app.map,
                         icon: here,
-                        zIndex: 1,
+                        zIndex: 999999,
                         position: place.geometry.location,
                     }));
 
@@ -780,6 +780,7 @@
                     });
 
                     app.map.fitBounds(bounds);
+                    app.map.panBy(0, -150);
                 }
 
             },
@@ -974,27 +975,9 @@
                             // if (infoWindow) { infoWindow.close();}
                             infoWindow.open(this.map, this);
                         });
-                        //Allow each marker to have an info window    
-                        // google.maps.event.addListener(marker, 'spider_click', (function(marker, i) {
-                        //     console.log('hey');
-                        //     return function() {
-                        //         infoWindow.setContent(windowString);
-                        //         infoWindow.open(this.map, marker);
-                        //     }
-                        // })(marker, i));
-                        // let theMap = this.map;
-                        // let infoWindow = new google.maps.InfoWindow();
-                        // this.oms.addListener('click', function(marker, event, i) {
-                        //     infoWindow.setContent('hey');
-                        //     infoWindow.open(theMap, marker);
-                        // });
                         
                         this.oms.addMarker(marker);
 
-                        // windowArray.push(windowString);
-                        // this.windows.push(windowArray);
-                        
-                        // var infoWindow = new google.maps.InfoWindow(), marker, i;
                     } else {
                         return
                     }

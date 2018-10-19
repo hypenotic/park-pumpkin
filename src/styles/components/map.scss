@@ -139,7 +139,7 @@
 #reset-location {
   display: block;
   top: 178px;
-  right: 27.5rem;
+    right: 13.2rem;
   font-family: $nav-type;
   z-index: 1;
     @media #{$small-and-down} {
@@ -160,8 +160,8 @@
     color: $blue;
     // border: 2px solid $blue;
     @media #{$medium-and-up} {
-		top: 178px;
-        right: 13.2rem;
+		top: 250px;
+        right: 60px;
         left: auto;
 		// font-size: 30px;
     }
