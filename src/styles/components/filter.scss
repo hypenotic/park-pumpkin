@@ -2,7 +2,7 @@
     // background-color:rgba(63,63,63,1);
     height: 80px; 
     position: relative; 
-    top:-30px; 
+    top:0px; 
     z-index: 50000; 
     width: 100%;
     @media #{$medium-and-up} {
@@ -165,7 +165,7 @@
     // background: rgb(2, 33, 95); 
     @media #{$small-and-down} {
       position: absolute;
-      top: 0px;
+      top: 40px;
       right: 30px;
       li {
         display:inline-block;

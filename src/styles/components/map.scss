@@ -137,13 +137,13 @@
 }
 
 #reset-location {
-  display: block;
-  top: 178px;
+    display: block;
+    top: 178px;
     right: 13.2rem;
-  font-family: $nav-type;
-  z-index: 1;
+    font-family: $nav-type;
+    z-index: 1;
     @media #{$small-and-down} {
-        top: -40px;
+        top: 40px;
         right: 20px;
         font-size: 12px;
     }
@@ -152,7 +152,7 @@
 #change-area {
     position: absolute;
     z-index: 1;
-    top: -110px;
+    top: 0px;
     left: 1.5rem;
     font-weight: bold;
     font-family: $nav-type;
