@@ -3,11 +3,11 @@
         <h3>Parades</h3>
         <div class="map-list-container" v-if="activeMarkers.length == 0">
             <!-- <div class="empty-message" v-if="activeMarkers.length == 0">No events match your search.</div> -->
-            <app-card v-for="item in locations" :key="item.id" v-if="item.timeframe != 'past'" :item="item"></app-card>
+            <app-card v-for="item in locations" :key="item.id" :item="item"></app-card>
         </div>
         <div class="map-list-container" v-else>
             <!-- <div class="empty-message" v-if="activeMarkers.length == 0">No events match your search.</div> -->
-            <app-card v-for="item in activeMarkers" :key="item.id" v-if="item.timeframe != 'past'" :item="item"></app-card>
+            <app-card v-for="item in activeMarkers" :key="item.id" :item="item"></app-card>
         </div>
     </section>
 </template>
