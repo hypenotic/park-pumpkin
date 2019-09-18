@@ -55,9 +55,9 @@
                 posts: [],
                 showLoader: false,
                 showList: false,
-                pin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                pin: 'https://parkpeople.ca/custom/uploads/2018/05/pumpkinpin.svg',
                 // morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/more_events_marker.svg',
-                morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/05/pumpkinpin.svg',
+                morePin: 'https://parkpeople.ca/custom/uploads/2018/05/pumpkinpin.svg',
                 torontoCheck: false
             }
         },

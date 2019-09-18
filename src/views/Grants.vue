@@ -1,26 +1,5 @@
 <template>
 	<div v-if="data != null">
-		<!-- <section id="banner" class="full">
-        </section>
-        <div id="stars">
-            <div class="twinkle">
-            </div>
-        </div>
-        <img id="moon" src="src/assets/moon.png">
-        <section id="hero" class="full">
-            <div class="fi">
-                <div class="blurb">
-                    <h1 v-html="data.meta_box._page_grant_heading"></h1>
-                </div>
-                <div>
-                    <form class="herosearch">
-                        <input type="text" name="findnear" placeholder="Find a parade near you">
-                        <input type="submit" value="🔍︎">
-                    </form>
-                </div>
-            </div>
-        </section> -->
-		
 		<section v-if="data && data.hasOwnProperty('meta_box')" style="background-repeat:repeat; position: relative;" class="hero">
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
@@ -36,12 +15,6 @@
 		<section class="map-section">
 			<app-map></app-map>
 		</section>
-
-		<!-- <section class="event-templates event-templates--top more-info">
-			<div class="event-templates__grad-container">
-				
-			</div>
-		</section> -->
 
 		<section class="full-width vid-ig">
 			<div class="container--extra-wide">
@@ -87,31 +60,31 @@
 					<h2>Resources and Blog Posts</h2>
 					<div class="three-column fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
 						<div class="three-column__single">
-							<img src="https://parkpeople.ca/listings/custom/uploads/2017/12/TD-PB-Oakridge-Park-Pumpkin-Parade-1.jpg" alt="">
+							<img src="https://parkpeople.ca/custom/uploads/2017/12/TD-PB-Oakridge-Park-Pumpkin-Parade-1.jpg" alt="">
 							<h3>Tips to make your pumpkin parade shine</h3>
 							<p>Pumpkin Parades are simple, but there are a few things you should know before hosting your first one.</p>
 							<a href="https://parkpeople.ca/resources/en/resource/551/tips-to-make-your-pumpkin-parade-shine" target="_blank">View resource</a>
 						</div>
 						<div class="three-column__single">
-							<img src="https://parkpeople.ca/listings/custom/uploads/2017/11/imageedit_92_9455866180.jpg" alt="">
+							<img src="https://parkpeople.ca/custom/uploads/2017/11/imageedit_92_9455866180.jpg" alt="">
 							<h3>Pumpkin Parades</h3>
 							<p>Pumpkin Parades involve bringing all of the community jack-o-lanterns to the park to create a magical gallery of pumpkins for the neighbourhood to enjoy. They’re simple to execute and are growning in popularity. Find out why.</p>
 							<a href="https://parkpeople.ca/resources/en/resource/449/pumpkin-parade" target="_blank">View resource</a>
 						</div>
 						<div class="three-column__single">
-							<img src="https://i0.wp.com/parkpeople.ca/wp-content/uploads/2018/09/imageedit_107_8911361817.jpg?resize=1080%2C810&ssl=1" alt="">
+							<img src="https://parkpeople.ca/custom/uploads/2018/09/imageedit_107_8911361817.jpg?resize=1080%2C810&ssl=1" alt="">
 							<h3>Pumpkin Parade Founder gets to the core of her love of pumpkins</h3>
 							<p>Yes, Pumpkin Parades are a Toronto-born cultural phenomenon. But, do you know the woman behind this great tradition?</p>
 							<a href="https://parkpeople.ca/archives/9626" target="_blank">View blog post</a>
 						</div>
 						<div class="three-column__single">
-							<img src="https://i2.wp.com/parkpeople.ca/wp-content/uploads/2018/09/anita-grace.jpg?zoom=2&resize=694%2C390&ssl=1" alt="">
+							<img src="https://parkpeople.ca/custom/uploads/2018/09/anita-grace.jpg?zoom=2&resize=694%2C390&ssl=1" alt="">
 							<h3>Ottawa spreads Pumpkin Parade celebrations</h3>
 							<p>We spoke with Anita Grace, who brought the parades to Ottawa to get the scoop on what it’s been like bringing the Halloween after-party to her city.</p>
 							<a href="https://parkpeople.ca/archives/9633" target="_blank">View blog post</a>
 						</div>
 						<div class="three-column__single">
-							<img src="https://i2.wp.com/parkpeople.ca/wp-content/uploads/2018/09/imageedit_113_9041076518.jpg?zoom=2&resize=694%2C433&ssl=1" alt="">
+							<img src="https://parkpeople.ca/custom/uploads/2018/09/imageedit_113_9041076518.jpg?zoom=2&resize=694%2C433&ssl=1" alt="">
 							<h3>You don’t need to celebrate halloween to love pumpkin parades</h3>
 							<p>Clara Stewart Robertson brought a Pumpkin Parade to her neighbourhood. And in her neighbourhood Pumpkin Parades thrived, even without Halloween.</p>
 							<a href="https://parkpeople.ca/archives/9641" target="_blank">View blog post</a>
@@ -131,9 +104,6 @@
 		<section class="pp-sponsors">
 			<h2>Made possible by a great collaboration:</h2>
 			<ul>
-				<!-- <li v-for="sponsor in data.meta_box._page_grant_sponsors" :key="sponsor['_page_g_sponsor_img']">
-					<a :href="sponsor['_page_g_sponsor_link']" target="_blank"><img :src="sponsor['_page_g_sponsor_img']" alt="logo"></a>
-				</li>  -->
 				<li>
 					<img src="https://parkpeople.ca/listings/custom/uploads/2018/06/TO_logo_black.png" alt="Toronto Logo">
 					<img src="https://parkpeople.ca/listings/custom/uploads/2018/04/pp_logo_large.png" alt="Park People Logo">
@@ -148,11 +118,10 @@
 			</ul>
 		</section>
 		
-		<!-- <app-related :title="data.meta_box._page_grant_resource_heading" :copy="data.meta_box._page_grant_resource_copy" :posts="relatedPosts"></app-related> -->
 	</div>
 	<div v-else class="loading-panel">
 		<div>
-			<img src="https://parkpeople.ca/listings/custom/uploads/2018/01/birdflying_pp_small.gif" alt="">
+			<img src="https://parkpeople.ca/custom/uploads/2018/01/birdflying_pp_small.gif" alt="">
 			
 		</div>
 	</div>
@@ -216,7 +185,7 @@ export default {
 
 	},
 	created() {
-		axios.get('https://parkpeople.ca/listings/wp-json/wp/v2/pages/2394?_embed')
+		axios.get('https://parkpeople.ca/wp-json/wp/v2/pages/2394?_embed')
 		.then(response => {
             console.log(response.data)
 			this.data = response.data;
