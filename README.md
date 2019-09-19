@@ -1,8 +1,8 @@
 <h1 align="center">
     <br>
-    <a href="https://parkpeople.ca/pumpkinparades" target="_blank"><img src="https://parkpeople.ca/custom/uploads/2019/07/Logo_Bilingual_stacked_colour.png" alt="Park People logo" width="300"></a>
+    <a href="https://parkpeople.ca/pumpkinparades/" target="_blank"><img src="https://parkpeople.ca/custom/uploads/2019/07/Logo_Bilingual_stacked_colour.png" alt="Park People logo" width="300"></a>
     <br>
-    Park People - Pumpkin Parades
+    Park People - Pumpkin Parades (English)
     <br>
 </h1>
 
