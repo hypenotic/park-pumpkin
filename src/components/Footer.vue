@@ -181,6 +181,11 @@
                     -o-transform: skewY(3deg);
                     transform: skewY(3deg);
                 }
+                @media #{$medium-and-down}{
+                    width: 0;
+                    height: 0;
+                    background:transparent;
+                }
             }
         }
     }

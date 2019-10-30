@@ -7,11 +7,11 @@
 
             <div class="card-content">
                 <h5>
-                    <a :href="'https://parkpeople.ca/listings/events/?n='+ item.slug+ '&id='+ item.id+'&tdgrant=true'" target="_blank" v-html="item.title" v-if="item.timeframe !== 'past'"></a>
+                    <a :href="'https://parkpeople.ca/listings/events/?n='+ item.slug+ '&id='+ item.id+'&pumpkin=true'" target="_blank" v-html="item.title" v-if="item.timeframe !== 'past'"></a>
                     <span v-html="item.title" v-if="item.timeframe == 'past'"></span>
                 </h5>
                 
-                <p class="single-list__group" v-if="item.listing[1] !== 'Title'"><i class="fa fa-users"></i> <a :href="'https://parkpeople.ca/listings/groups/?n='+item.listing[2]+'&id='+item.listing[0]+'&tdgrant=true'" target="_blank"><span v-html="item.listing[1]"></span></a></p>
+                <p class="single-list__group" v-if="item.listing[1] !== 'Title'"><i class="fa fa-users"></i> <a :href="'https://parkpeople.ca/listings/groups/?n='+item.listing[2]+'&id='+item.listing[0]+'&pumpkin=true'" target="_blank"><span v-html="item.listing[1]"></span></a></p>
     
                 <p class="single-list__date"><i class="fa fa-calendar-o" aria-hidden="true"></i> <span v-html="item.nice_start_date"></span></p>
     

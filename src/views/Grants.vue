@@ -4,8 +4,8 @@
 			<img src="https://parkpeople.ca/listings/custom/uploads/2018/05/banner_flattened.png" alt="" class="main-banner">
 			<div class="banner-text">
 				<h1 v-html="data.meta_box._page_grant_heading"></h1>
-				<div>
-					<input id="pac-input" type="text" name="findnear" placeholder="Find a pumpkin parade near you*">
+				<div style="display: none;">
+					<input disabled id="pac-input" type="text" name="findnear" placeholder="Find a pumpkin parade near you*">
 					<input id="pac-submit" type="submit" value="">
 					<span class="km-note">* within 5km of address</span>
 				</div>
@@ -102,19 +102,20 @@
 		</section>
 
 		<section class="pp-sponsors">
-			<h2>Made possible by a great collaboration:</h2>
+			<!-- <h2>Made possible by a great collaboration:</h2> -->
+			<h2>Made Possible by:</h2>
 			<ul>
 				<li>
-					<img src="https://parkpeople.ca/listings/custom/uploads/2018/06/TO_logo_black.png" alt="Toronto Logo">
-					<img src="https://parkpeople.ca/listings/custom/uploads/2018/04/pp_logo_large.png" alt="Park People Logo">
+					
+					<img src="https://parkpeople.ca/custom/uploads/2019/07/Logo_Bilingual_stacked_colour.png" alt="Park People Logo">
 				</li>
-				<li class="second-sponsor">
+				<!-- <li class="second-sponsor">
 					<p>Media Sponsor</p>
 					<img src="https://parkpeople.ca/listings/custom/uploads/2018/10/SML_Logo-ColourRGB.png" alt="">
 				</li>
 				<li>
 
-				</li>
+				</li> -->
 			</ul>
 		</section>
 		
@@ -187,7 +188,7 @@ export default {
 	created() {
 		axios.get('https://parkpeople.ca/wp-json/wp/v2/pages/2394?_embed')
 		.then(response => {
-            console.log(response.data)
+            // console.log(response.data)
 			this.data = response.data;
 			
 			this.loading = false;

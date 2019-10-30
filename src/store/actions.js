@@ -19,6 +19,7 @@ export const actions = {
         console.log('getActivities dispatched');
         axios.get('https://parkpeople.ca/wp-json/activitydata/v1/all')
         .then(function (response) {
+            console.log(response)
             commit(types.SET_ACTIVITY_LIST, response.data);
         })
         .catch(function (error) {
@@ -56,5 +57,6 @@ export const actions = {
         commit(types.SET_ACTIVE_LIST, list);
     },
     scrapeInstagram({state, commit}) { 
-        axios.get("https://www.instagram.com/explore/tags/pumpkinparades/").then( ({data}) => (data.match(igregex)) ).then( res => commit("pushIgphotos", res) ) }
+        axios.get("https://www.instagram.com/explore/tags/pumpkinparades/").then( ({data}) => (
+            console.log(data, "in scrape insta"), data.match(igregex)) ).then( res => commit("pushIgphotos", res) ) }
 }
