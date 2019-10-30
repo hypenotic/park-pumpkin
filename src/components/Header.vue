@@ -164,9 +164,14 @@ export default {
 }
 
 .navbar-menu .park-logo {
+    // max-height: 2rem;
     &:hover {
         background: transparent;
     }
+}
+
+nav img {
+    height: 2.5rem;
 }
 
 
