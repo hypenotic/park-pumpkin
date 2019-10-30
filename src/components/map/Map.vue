@@ -8,7 +8,6 @@
             <button id="reset-location" class="button hidden-reset-loc" style="position: absolute; z-index: 1;">Reset Map</button>
             <button id="change-area" class="button" @click="mapZoom">
             <!-- <button id="change-area" class="button" @click="toggleArea"> -->
-
                 <!-- <span v-if="!torontoCheck">Parades outside of Toronto</span> -->
                 <span v-if="!torontoButtonPress">Parades outside of Toronto</span>
                 <span v-else>Toronto Parades</span>
