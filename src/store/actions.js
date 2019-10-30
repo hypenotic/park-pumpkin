@@ -19,6 +19,7 @@ export const actions = {
         console.log('getActivities dispatched');
         axios.get('https://parkpeople.ca/wp-json/activitydata/v1/all')
         .then(function (response) {
+            console.log(response)
             commit(types.SET_ACTIVITY_LIST, response.data);
         })
         .catch(function (error) {
