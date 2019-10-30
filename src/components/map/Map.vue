@@ -6,8 +6,11 @@
             <app-map-list></app-map-list>
             <div class="loading" v-bind:class="{ 'active-loader': showLoader }">Loading&#8230;</div>
             <button id="reset-location" class="button hidden-reset-loc" style="position: absolute; z-index: 1;">Reset Map</button>
-            <button id="change-area" class="button" @click="toggleArea">
-                <span v-if="!torontoCheck">Parades outside of Toronto</span>
+            <button id="change-area" class="button" @click="mapZoom">
+            <!-- <button id="change-area" class="button" @click="toggleArea"> -->
+
+                <!-- <span v-if="!torontoCheck">Parades outside of Toronto</span> -->
+                <span v-if="!torontoButtonPress">Parades outside of Toronto</span>
                 <span v-else>Toronto Parades</span>
             </button>
         </div>
@@ -58,7 +61,8 @@
                 pin: 'https://parkpeople.ca/custom/uploads/2018/05/pumpkinpin.svg',
                 // morePin: 'https://parkpeople.ca/listings/custom/uploads/2018/04/more_events_marker.svg',
                 morePin: 'https://parkpeople.ca/custom/uploads/2018/05/pumpkinpin.svg',
-                torontoCheck: false
+                torontoCheck: false,
+                torontoButtonPress: false,
             }
         },
         mounted() {
@@ -70,6 +74,7 @@
                 zoom: this.zoom,
                 mapTypeControl: false,
                 scrollwheel:  false,
+                streetViewControl: false,
                 // draggable: isDraggable,
 
                 // The latitude and longitude to center the map (always required)
@@ -286,6 +291,20 @@
             app.buildMarkers();
         },
         methods: {
+            // added on functionality that simple zooms and unzooms map because search ended up breaking
+            mapZoom(){
+                if (this.map.zoom == 11){
+                    this.torontoButtonPress = true;
+                    let coord = new google.maps.LatLng('49.895138', '-92.138374')
+                    this.map.setZoom(4)
+                    this.map.setCenter(coord)
+                } else {
+                    this.torontoButtonPress = false;
+                    let coord = new google.maps.LatLng('43.7932', '-79.3832')
+                    this.map.setCenter(coord)
+                    this.map.setZoom(11)
+                }
+            },
             toggleArea(){
                 if (this.torontoCheck == true) {
                     this.torontoCheck = false;
@@ -361,7 +380,7 @@
                     }
 
                     console.log('activityMatch', active);
-                    app.$store.dispatch("setActiveEvents", active );
+                    app.$store.dispatch("setActiveEvents", app.locations );
 
                 } else if (value.length>0 && check.length > 0) {
                     console.log('Filter Option 2');
@@ -382,7 +401,7 @@
                     console.log('activityMatch', active);
                     app.$store.dispatch("setActiveEvents", active );
 
-                    // app.rebuildMarkers();
+                    app.rebuildMarkers();
 
                 } else if (value.length >0 && check.length == 0) {
                     console.log('Filter Option 3');
@@ -415,7 +434,7 @@
                         var distanceBT = google.maps.geometry.spherical.computeDistanceBetween(originPlace, newPlace);
 
                         if (distanceBT > 5000) {
-                            // app.markers[i].setVisible(false);
+                            app.markers[i].setVisible(false);
                         } else {
                             active.push(app.locations[i]);
                         }
@@ -525,7 +544,7 @@
                 for( var i = 0; i < app.locations.length; i++ ){
 
                     // Check is event is in TO
-                    if (app.locations[i].pc.startsWith("M") && !app.torontoCheck) {
+                    // if (app.locations[i].pc.startsWith("M") && !app.torontoCheck) {
 
                         /*
                         Set marker position
@@ -600,7 +619,7 @@
                             return
                         }
 
-                    } //end STARTWITH
+                    // } //end STARTWITH
 
                 }
 

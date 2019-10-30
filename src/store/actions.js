@@ -57,5 +57,6 @@ export const actions = {
         commit(types.SET_ACTIVE_LIST, list);
     },
     scrapeInstagram({state, commit}) { 
-        axios.get("https://www.instagram.com/explore/tags/pumpkinparades/").then( ({data}) => (data.match(igregex)) ).then( res => commit("pushIgphotos", res) ) }
+        axios.get("https://www.instagram.com/explore/tags/pumpkinparades/").then( ({data}) => (
+            console.log(data, "in scrape insta"), data.match(igregex)) ).then( res => commit("pushIgphotos", res) ) }
 }
