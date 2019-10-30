@@ -107,7 +107,7 @@
 			<ul>
 				<li>
 					
-					<img src="https://parkpeople.ca/custom/uploads/2019/07/Logo_Bilingual_stacked_colour.png" alt="Park People Logo">
+					<img src="src/assets/parkpeople.png" alt="Park People Logo">
 				</li>
 				<!-- <li class="second-sponsor">
 					<p>Media Sponsor</p>
