@@ -496,10 +496,17 @@ h1 {
 }
 
 .split {
+	max-height: 400px;
 	@media #{$medium-and-up} {
 		display: flex;
+		justify-content: center;
 		>div {
-			width: 50%;
+			width: 100%;
+			max-height: 400px;
+			max-width: 800px;
+		}
+		iframe {
+			height: 400px;
 		}
 	}
 	.split-ig--text {
@@ -516,6 +523,9 @@ h1 {
 		// }
 	}
 }
+// .split-video {
+// 	width:
+// }
 
 .vid-ig {
 	background-image: url(https://parkpeople.ca/listings/custom/uploads/2018/05/stars_REPEATABLE_SWTACH.jpg);background-repeat: repeat;
